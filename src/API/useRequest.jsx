@@ -12,6 +12,8 @@ const useRequest = () => {
     const [moviesByGenre, setMoviesByGenre] = useState([]);
     const [getTrending, setGetTrending] = useState([]);
     const [getPopular, setGetPopular] = useState([]);
+    const [getTopRated, setGetTopRated] = useState([]);
+    const [getUpcoming, setGetUpcoming] = useState([]);
 
     const movieGenres = async () => {
         const getGenre = await axios
@@ -75,9 +77,36 @@ const useRequest = () => {
             });
         return getTrendingMovies;
     };
+    const topRatedMovies = async () => {
+        const getTopRatedMovies = await axios
+            .get(API_URL + "movie/top_rated", {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            })
+            .then((response) => setGetTopRated(response.data.results))
+            .catch(function (error) {
+                console.log(error);
+            });
+        return getTopRatedMovies;
+    };
+    const upComingMovies = async () => {
+        const getUpcomingMovies = await axios
+            .get(API_URL + "movie/upcoming", {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            })
+            .then((response) => setGetUpcoming(response.data.results))
+            .catch(function (error) {
+                console.log(error);
+            });
+        return getUpcomingMovies;
+    };
 
     return {
-        // baseURL,
         movieGenres,
         movieListGenres,
         moviesByGenre,
@@ -86,6 +115,10 @@ const useRequest = () => {
         trendingMovies,
         getTrending,
         getPopular,
+        topRatedMovies,
+        getTopRated,
+        upComingMovies,
+        getUpcoming,
     };
 };
 

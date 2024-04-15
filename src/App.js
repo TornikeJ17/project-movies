@@ -23,6 +23,10 @@ const App = () => {
         trendingMovies,
         getTrending,
         getPopular,
+        topRatedMovies,
+        getTopRated,
+        upComingMovies,
+        getUpcoming,
     } = useRequest();
 
     const getActivePage = (pathname) => {
@@ -41,6 +45,8 @@ const App = () => {
         movieGenres();
         trendingMovies();
         popularMovies();
+        topRatedMovies();
+        upComingMovies();
     }, []);
     return (
         <AppContainer isActive={isActive}>
@@ -68,6 +74,8 @@ const App = () => {
                                 moviesByGenre={moviesByGenre}
                                 getTrending={getTrending}
                                 getPopular={getPopular}
+                                getTopRated={getTopRated}
+                                getUpcoming={getUpcoming}
                             />
                         }
                     />

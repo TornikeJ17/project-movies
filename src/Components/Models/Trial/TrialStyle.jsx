@@ -30,7 +30,7 @@ export const Block = styled.div`
     z-index: 0;
     align-self: stretch;
     div {
-        width: 152px;
+        width: 146px;
         height: 83.75px;
         border-radius: 12px;
         mix-blend-mode: overlay;
