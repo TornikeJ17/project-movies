@@ -12,7 +12,7 @@ import { images } from "../../../API/svgFiles";
 const Trial = () => {
     return (
         <Container>
-            {/* <BackgroundImage>
+            <BackgroundImage>
                 {images.map((item, index) => (
                     <Block key={index}>
                         {item.name.map((img, index) => (
@@ -36,7 +36,7 @@ const Trial = () => {
                     </Text>
                 </div>
                 <Button>Start a Free Trail</Button>
-            </SecondBlock> */}
+            </SecondBlock>
         </Container>
     );
 };

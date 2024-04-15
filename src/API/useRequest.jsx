@@ -9,7 +9,9 @@ const Authorization =
 
 const useRequest = () => {
     const [getGenres, setGetGenres] = useState([]);
+    const [moviesByGenre, setMoviesByGenre] = useState([]);
     const [getTrending, setGetTrending] = useState([]);
+    const [getPopular, setGetPopular] = useState([]);
 
     const movieGenres = async () => {
         const getGenre = await axios
@@ -25,19 +27,25 @@ const useRequest = () => {
             });
         return getGenre;
     };
-    const movieList = async () => {
-        const getMovies = await axios
-            .get(API_URL + "discover/movie", {
+    const movieListGenres = async (genreId) => {
+        console.log(genreId, "ganre");
+        try {
+            const getMovies = await axios.get(API_URL + "discover/movie", {
+                params: {
+                    with_genres: genreId,
+                },
                 headers: {
                     accept: "application/json",
                     Authorization,
                 },
-            })
-            .then((response) => console.log(response.data))
-            .catch(function (error) {
-                console.error(error);
             });
-        return getMovies;
+            setMoviesByGenre((prevMovies) => ({
+                ...prevMovies,
+                [genreId]: getMovies.data.results,
+            }));
+        } catch (error) {
+            console.log(error);
+        }
     };
     const popularMovies = async () => {
         const getPopularMovies = await axios
@@ -47,7 +55,7 @@ const useRequest = () => {
                     Authorization,
                 },
             })
-            .then((response) => console.log(response.data))
+            .then((response) => setGetPopular(response.data.results))
             .catch(function (error) {
                 console.log(error);
             });
@@ -71,11 +79,13 @@ const useRequest = () => {
     return {
         // baseURL,
         movieGenres,
-        movieList,
+        movieListGenres,
+        moviesByGenre,
         popularMovies,
         getGenres,
         trendingMovies,
         getTrending,
+        getPopular,
     };
 };
 

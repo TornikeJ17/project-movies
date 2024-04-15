@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PlanBlocks = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(377px, 1fr));
     gap: 30px;
     align-self: stretch;
 `;

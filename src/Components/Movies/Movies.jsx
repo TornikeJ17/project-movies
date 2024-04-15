@@ -1,10 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../Models/Container/Container";
 import Trial from "../Models/Trial/Trial";
+import { BlockContainer } from "./MoviesStyle";
+import ContentWithSlider from "../Models/ContentWithSlider/ContentWithSlider";
 
-const Movies = () => {
+const Movies = ({
+    genres,
+    movieListGenres,
+    moviesByGenre,
+    getTrending,
+    getPopular,
+}) => {
     return (
         <Container>
+            <BlockContainer className="movies">
+                <ContentWithSlider
+                    HeaderTitle={`Our Genres`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={genres?.genres}
+                    secondArray={moviesByGenre}
+                    onClickFunction={movieListGenres}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Trending Now`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getTrending}
+                    secondArray={"-1"}
+                    onClickFunction={movieListGenres}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Popular`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getPopular}
+                    secondArray={"-1"}
+                    onClickFunction={movieListGenres}
+                />
+            </BlockContainer>
+            <BlockContainer className="shows">
+                <ContentWithSlider
+                    HeaderTitle={`Our Genres`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={genres?.genres}
+                    secondArray={moviesByGenre}
+                    onClickFunction={movieListGenres}
+                />
+            </BlockContainer>
             <Trial />
         </Container>
     );

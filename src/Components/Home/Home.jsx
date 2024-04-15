@@ -1,8 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-    CategoriesSlideContainer,
-    CategoriesSlideBlock,
-    CategoriesSlideCard,
     DevicesContainer,
     DevicesBlock,
     DevicesCard,
@@ -10,24 +7,20 @@ import {
     DeviceText,
     DeviceIcon,
     DeviceTitle,
-    Image,
 } from "./HomeStyle";
-import { devices, plans } from "../../API/svgFiles";
+import { devices } from "../../API/svgFiles";
 import Trial from "../Models/Trial/Trial";
 import Container from "../Models/Container/Container";
 import Header from "../Models/Header/Header";
 import Plans from "../Models/Plans/Plans";
 import Questions from "../Models/Questions/Questions";
-import SliderHeader from "../Models/SliderHeader/SliderHeader";
+import ContentWithSlider from "../Models/ContentWithSlider/ContentWithSlider";
 
-const baseURL = "https://image.tmdb.org/t/p/original";
-
-const Home = ({ genres, getTrending }) => {
+const Home = ({ genres, movieListGenres, moviesByGenre, isActive }) => {
     const RenderCategoriesSlide = () => {
         const [startIndex, setStartIndex] = useState(0);
         const [activeIndex, setActiveIndex] = useState(0);
-        const itemsPerPage = 5;
-
+        const itemsPerPage = 4;
         const totalPages = Math.ceil(genres.genres?.length / itemsPerPage);
 
         const handleLeftClick = () => {
@@ -43,42 +36,30 @@ const Home = ({ genres, getTrending }) => {
                 setActiveIndex(activeIndex + 1);
             }
         };
+        useEffect(() => {
+            if (genres.genres) {
+                genres.genres.forEach((item) => {
+                    movieListGenres(item.id);
+                });
+            }
+        }, [genres.genres]);
         return (
-            <CategoriesSlideContainer>
-                <Header
-                    title={`Explore our wide variety of categories`}
-                    text={`Whether you're looking for a comedy to make you
-                        laugh, a drama to make you think, or a documentary
-                        to learn something new`}
-                >
-                    <SliderHeader
-                        handleLeftClick={handleLeftClick}
-                        handleRightClick={handleRightClick}
-                        activeIndex={activeIndex}
-                        totalPages={totalPages}
-                    />
-                </Header>
-                <CategoriesSlideBlock>
-                    {genres.genres
-                        ?.slice(startIndex, startIndex + itemsPerPage)
-                        .map((item, index) => (
-                            <CategoriesSlideCard key={index}>
-                                {item.name}
-                            </CategoriesSlideCard>
-                        ))}
-                    {console.log("some", getTrending)}
-                    {getTrending
-                        .slice(startIndex, startIndex + itemsPerPage)
-                        .map((item, index) => (
-                            <CategoriesSlideCard>
-                                <Image
-                                    src={baseURL + item.poster_path}
-                                    alt={item.title}
-                                />
-                            </CategoriesSlideCard>
-                        ))}
-                </CategoriesSlideBlock>
-            </CategoriesSlideContainer>
+            <ContentWithSlider
+                HeaderTitle={`Explore our wide variety of categories`}
+                HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                isActive={isActive}
+                firstArray={genres.genres}
+                secondArray={moviesByGenre}
+                handleLeftClick={handleLeftClick}
+                handleRightClick={handleRightClick}
+                activeIndex={activeIndex}
+                totalPages={totalPages}
+                startIndex={startIndex}
+                itemsPerPage={itemsPerPage}
+                onClickFunction={movieListGenres}
+            />
         );
     };
 

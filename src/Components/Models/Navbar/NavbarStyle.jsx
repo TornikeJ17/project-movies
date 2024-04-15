@@ -87,3 +87,12 @@ export const MenuItem = styled.div`
         background: var(--Black-10, #1a1a1a);
     }
 `;
+export const HamburgerMenu = styled.div`
+    display: flex;
+    padding: 12px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    border: 3px solid var(--Black-15, #262626);
+    background: var(--Black-10, #1a1a1a);
+`;

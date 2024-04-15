@@ -16,7 +16,7 @@ const Subscriptions = () => {
     const compareHeader = () => {
         return (
             <>
-                <SubHeader>
+                <SubHeader index={0}>
                     <span>Features</span>
                 </SubHeader>
                 <SubHeader>
@@ -28,7 +28,7 @@ const Subscriptions = () => {
                         <span className="popular">Popular</span>
                     </div>
                 </SubHeader>
-                <SubHeader>
+                <SubHeader index={1}>
                     <span>Premium</span>
                 </SubHeader>
             </>

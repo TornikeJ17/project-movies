@@ -20,17 +20,19 @@ const SliderHeader = ({
     };
 
     return (
-        <SliderContainer>
-            <SliderButton onClick={handleLeftClick}>
-                {icons[3].svg}
-            </SliderButton>
-            <SliderIndicator activeIndex={activeIndex}>
-                {renderIndicators()}
-            </SliderIndicator>
-            <SliderButton onClick={handleRightClick}>
-                {icons[2].svg}
-            </SliderButton>
-        </SliderContainer>
+        <>
+            <SliderContainer>
+                <SliderButton onClick={handleLeftClick}>
+                    {icons[3].svg}
+                </SliderButton>
+                <SliderIndicator activeIndex={activeIndex}>
+                    {renderIndicators()}
+                </SliderIndicator>
+                <SliderButton onClick={handleRightClick}>
+                    {icons[2].svg}
+                </SliderButton>
+            </SliderContainer>
+        </>
     );
 };
 

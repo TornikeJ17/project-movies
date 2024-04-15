@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const Title = styled.div`
     display: grid;
-    grid-template-columns: 1fr 0fr;
+    grid-template-columns: 1fr auto;
     gap: 20px;
-    width: 100%;
+    width: ${({ isActive }) => (isActive === "home" ? "100%" : "")};
     font-family: Manrope;
     align-items: center;
-    max-width: 1597px;
+    padding-top: ${({ isActive }) => (isActive === "home" ? "0px" : "50px")};
+    padding-right: ${({ isActive }) => (isActive === "home" ? "0px" : "50px")};
+    padding-left: ${({ isActive }) => (isActive === "home" ? "0px" : "50px")};
 `;
 export const H1 = styled.h1`
     color: var(--Absolute-White, #fff);
@@ -26,5 +28,6 @@ export const Span = styled.span`
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 27px */
+    width: 100%;
     max-width: 1297px;
 `;

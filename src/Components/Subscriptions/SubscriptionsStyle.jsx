@@ -22,9 +22,10 @@ export const SubHeader = styled.div`
     align-items: center;
     gap: 10px;
     flex: 1 0 0;
-    z-index: -1;
+    z-index: 0;
     background: var(--Black-06, #0f0f0f);
-
+    border-radius: ${({ index }) =>
+        (index === 0 && "12px 0 0 0") || (index === 1 && "0 12px 0 0")};
     span {
         color: var(--Absolute-White, #fff);
         font-family: Manrope;

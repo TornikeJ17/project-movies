@@ -3,18 +3,19 @@ import styled from "styled-components";
 export const CategoriesSlideContainer = styled.div`
     display: grid;
     gap: 80px;
-    width: 100%;
+    max-width: 1597px;
 `;
 
 export const CategoriesSlideBlock = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(292px, auto));
     gap: 30px;
     align-self: stretch;
-    max-width: 1597px;
 `;
 export const CategoriesSlideCard = styled.div`
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+    gap: 4px;
     padding: 30px;
     height: 275px;
     border-radius: 12px;
@@ -83,9 +84,24 @@ export const DeviceTitle = styled.div`
     font-weight: 600;
     line-height: 150%; /* 36px */
 `;
+export const ImageBlock = styled.div`
+    background: linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0) 0%,
+        #1a1a1a 101.79%
+    );
+`;
 export const Image = styled.img`
-    width: 237px;
-    height: 252px;
+    width: 100%;
+    height: 123px;
     object-fit: fill;
     border-radius: 12px;
+`;
+export const GenreNames = styled.div`
+    color: var(--Absolute-White, #fff);
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 27px */
 `;

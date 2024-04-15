@@ -16,11 +16,13 @@ const App = () => {
     const {
         baseURL,
         movieGenres,
-        movieList,
+        movieListGenres,
+        moviesByGenre,
         popularMovies,
         getGenres,
         trendingMovies,
         getTrending,
+        getPopular,
     } = useRequest();
 
     const getActivePage = (pathname) => {
@@ -38,6 +40,7 @@ const App = () => {
     useEffect(() => {
         movieGenres();
         trendingMovies();
+        popularMovies();
     }, []);
     return (
         <AppContainer isActive={isActive}>
@@ -49,13 +52,25 @@ const App = () => {
                         path="/"
                         element={
                             <Home
-                                // baseURL={baseURL}
+                                movieListGenres={movieListGenres}
+                                moviesByGenre={moviesByGenre}
                                 genres={getGenres}
-                                getTrending={getTrending}
+                                isActive={isActive}
                             />
                         }
                     />
-                    <Route path="/movie" element={<Movies />} />
+                    <Route
+                        path="/movie"
+                        element={
+                            <Movies
+                                movieListGenres={movieListGenres}
+                                genres={getGenres}
+                                moviesByGenre={moviesByGenre}
+                                getTrending={getTrending}
+                                getPopular={getPopular}
+                            />
+                        }
+                    />
                     <Route path="/support" element={<Support />} />
                     <Route path="/subscriptions" element={<Subscriptions />} />
                 </Routes>

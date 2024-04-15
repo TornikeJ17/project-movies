@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
+    display: grid;
     border: 1px solid #262626;
     border-radius: 12px;
     position: relative;
@@ -20,18 +20,21 @@ export const BackgroundImage = styled.div`
     flex-flow: wrap;
     border-radius: 12px;
     gap: 20px;
+    width: 100%;
 `;
 export const Block = styled.div`
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
     gap: 20px;
     flex: 1 0 0;
-    z-index: -3;
+    z-index: 0;
     align-self: stretch;
     div {
-        width: 160.11px;
+        width: 152px;
         height: 83.75px;
         border-radius: 12px;
+        mix-blend-mode: overlay;
+        opacity: 0.09;
     }
 `;
 export const SecondBlock = styled.div`
@@ -41,7 +44,7 @@ export const SecondBlock = styled.div`
     grid-template-columns: 0.9fr 0fr;
     align-items: center;
     justify-content: center;
-    top: 40%;
+    top: 37.5%;
     div {
         max-width: 1597px;
     }
