@@ -8,6 +8,7 @@ import {
     GenreNames,
     BlockClick,
 } from "./ContentWithSliderStyle";
+import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import SliderHeader from "../SliderHeader/SliderHeader";
 import { icons } from "../../../API/svgFiles";
@@ -22,6 +23,7 @@ const ContentWithSlider = ({
     HeaderText,
     onClickFunction,
 }) => {
+    const navigate = useNavigate();
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
     const itemsPerPage = 4;
@@ -38,6 +40,10 @@ const ContentWithSlider = ({
             setStartIndex(startIndex + itemsPerPage);
             setActiveIndex(activeIndex + 1);
         }
+    };
+    const listMovies = (id) => {
+        console.log(id);
+        navigate("/Movie/" + id.id);
     };
     useEffect(() => {
         if (firstArray) {
@@ -63,7 +69,7 @@ const ContentWithSlider = ({
                         <CategoriesSlideCard
                             images={secondArray.length}
                             key={index}
-                            onClick={() => onClickFunction(item.id)}
+                            onClick={() => listMovies(item)}
                         >
                             {secondArray && secondArray[item.id] ? (
                                 secondArray[item.id]
@@ -116,8 +122,9 @@ const ContentWithSlider = ({
                                 </ImageBlock>
                             )}
                             <BlockClick>
-                                <GenreNames>{item.name}</GenreNames>
-
+                                {secondArray && secondArray[item.id] && (
+                                    <GenreNames>{item.name}</GenreNames>
+                                )}
                                 {secondArray && secondArray[item.id] && (
                                     <div>{icons[2].svg}</div>
                                 )}

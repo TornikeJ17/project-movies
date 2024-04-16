@@ -5,7 +5,6 @@ const API_URL = "https://api.themoviedb.org/3/";
 const token = "Bearer 3fbde2b0637dd1c1935e7f8b6c8ff5ec";
 const Authorization =
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmJkZTJiMDYzN2RkMWMxOTM1ZTdmOGI2YzhmZjVlYyIsInN1YiI6IjY1ZmQ4ZTRjNzcwNzAwMDE2MzA4OWY3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Iy-N0kgmU2wyzEHwQR4r9sm-DyDHMlrbPsllQFEInqs";
-// const baseURL = "https://image.tmdb.org/t/p/original";
 
 const useMovieRequest = () => {
     const [getGenres, setGetGenres] = useState([]);
@@ -105,6 +104,21 @@ const useMovieRequest = () => {
         return getUpcomingMovies;
     };
 
+    const fetchMovieDetails = async (id) => {
+        try {
+            const response = await axios.get(`${API_URL}movie/${id}`, {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching movie details:", error);
+            throw error;
+        }
+    };
+
     return {
         movieGenres,
         movieListGenres,
@@ -118,6 +132,7 @@ const useMovieRequest = () => {
         getTopRated,
         upComingMovies,
         getUpcoming,
+        fetchMovieDetails,
     };
 };
 

@@ -5,6 +5,7 @@ import { BlockContainer } from "./MoviesStyle";
 import ContentWithSlider from "../Models/ContentWithSlider/ContentWithSlider";
 
 const Movies = ({
+    //movies
     genres,
     movieListGenres,
     moviesByGenre,
@@ -12,6 +13,15 @@ const Movies = ({
     getPopular,
     getTopRated,
     getUpcoming,
+    fetchMovieDetails,
+    //shows
+    showsListGenres,
+    getShowGenres,
+    showsByGenre,
+    getShowsTrending,
+    getShowsPopular,
+    getTopShowsRated,
+    getShowsAiring,
 }) => {
     return (
         <Container>
@@ -33,6 +43,7 @@ const Movies = ({
                     firstArray={getTrending}
                     secondArray={"-1"}
                     onClickFunction={movieListGenres}
+                    fetchMovieDetails={fetchMovieDetails}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Popular`}
@@ -68,9 +79,45 @@ const Movies = ({
                     HeaderText={`Whether you're looking for a comedy to make you
                 laugh, a drama to make you think, or a documentary
                 to learn something new`}
-                    firstArray={genres?.genres}
-                    secondArray={moviesByGenre}
-                    onClickFunction={movieListGenres}
+                    firstArray={getShowGenres?.genres}
+                    secondArray={showsByGenre}
+                    onClickFunction={showsListGenres}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Our Genres`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getShowsTrending}
+                    secondArray={"-1"}
+                    onClickFunction={showsListGenres}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Our Genres`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getShowsPopular}
+                    secondArray={"-1"}
+                    onClickFunction={showsListGenres}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Our Genres`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getTopShowsRated}
+                    secondArray={"-1"}
+                    onClickFunction={showsListGenres}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Our Genres`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getShowGenres?.genres}
+                    secondArray={showsByGenre}
+                    onClickFunction={showsListGenres}
                 />
             </BlockContainer>
             <Trial />

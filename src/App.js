@@ -10,6 +10,8 @@ import Support from "./Components/Support/Support";
 import Subscriptions from "./Components/Subscriptions/Subscriptions";
 import Home from "./Components/Home/Home";
 import axios from "axios";
+import useShowRequest from "./API/useShowRequest";
+import MoviesPage from "./Components/Movies/MoviesPage/MoviesPage";
 
 const App = () => {
     const {
@@ -25,15 +27,36 @@ const App = () => {
         getTopRated,
         upComingMovies,
         getUpcoming,
+        fetchMovieDetails,
     } = useMovieRequest();
+    const {
+        showsGenres,
+        showsListGenres,
+        popularShows,
+        trendingShows,
+        topRatedShows,
+        airingToday,
+        getShowGenres,
+        showsByGenre,
+        getShowsTrending,
+        getShowsPopular,
+        getTopShowsRated,
+        getShowsAiring,
+    } = useShowRequest();
 
-    const [isActive, setIsActive] = useState("home");
+    const [isActive, setIsActive] = useState("");
     useEffect(() => {
         movieGenres();
         trendingMovies();
         popularMovies();
         topRatedMovies();
         upComingMovies();
+        showsGenres();
+        showsListGenres();
+        popularShows();
+        trendingShows();
+        topRatedShows();
+        airingToday();
     }, []);
 
     return (
@@ -57,6 +80,7 @@ const App = () => {
                         path="/movie"
                         element={
                             <Movies
+                                //movies
                                 movieListGenres={movieListGenres}
                                 genres={getGenres}
                                 moviesByGenre={moviesByGenre}
@@ -64,7 +88,22 @@ const App = () => {
                                 getPopular={getPopular}
                                 getTopRated={getTopRated}
                                 getUpcoming={getUpcoming}
+                                fetchMovieDetails={fetchMovieDetails}
+                                //shows
+                                showsListGenres={showsListGenres}
+                                getShowGenres={getShowGenres}
+                                showsByGenre={showsByGenre}
+                                getShowsTrending={getShowsTrending}
+                                getShowsPopular={getShowsPopular}
+                                getTopShowsRated={getTopShowsRated}
+                                getShowsAiring={getShowsAiring}
                             />
+                        }
+                    />
+                    <Route
+                        path="/movie/:id"
+                        element={
+                            <MoviesPage fetchMovieDetails={fetchMovieDetails} />
                         }
                     />
                     <Route path="/support" element={<Support />} />
