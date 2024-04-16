@@ -118,6 +118,22 @@ const useMovieRequest = () => {
             throw error;
         }
     };
+    const fetchMovieReviews = async (id) => {
+        console.log(id);
+        try {
+            const response = await axios.get(`${API_URL}movie/${id}/reviews`, {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            console.log(response.data.results, "review response");
+            return response.data.results;
+        } catch (error) {
+            console.log("Error fetching movie reviews:", error);
+            throw error;
+        }
+    };
 
     return {
         movieGenres,
@@ -133,6 +149,7 @@ const useMovieRequest = () => {
         upComingMovies,
         getUpcoming,
         fetchMovieDetails,
+        fetchMovieReviews,
     };
 };
 
