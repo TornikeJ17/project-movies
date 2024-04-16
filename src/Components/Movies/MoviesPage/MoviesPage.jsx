@@ -7,6 +7,8 @@ import {
     PosterImage,
     MovieBlock,
     MovieBlockCard,
+    ReviewCard,
+    Cards,
 } from "./MoviesPageStyle";
 import Trial from "../../Models/Trial/Trial";
 const baseURL = "https://image.tmdb.org/t/p/original";
@@ -46,11 +48,11 @@ const MoviesPage = () => {
         return <div></div>;
     };
     const renderReviews = () => {
-        return movieReviews?.map((reviewItem, index) => (
-            <div>
+        return movieReviews?.slice(0, 2).map((reviewItem, index) => (
+            <ReviewCard>
                 {console.log(reviewItem)}
                 {reviewItem.content}
-            </div>
+            </ReviewCard>
         ));
     };
     const renderDetailsMovie = () => {
@@ -59,38 +61,33 @@ const MoviesPage = () => {
     return (
         <MoviesPageContainer>
             {renderPosterWithTitle()}
-            {renderReviews()}
 
             <MovieBlock>
                 <MovieBlockCard>
-                    <div>
+                    <Cards>
                         <img
                             style={{ width: 100, height: 100 }}
                             src={baseURL + movieDetails.backdrop_path}
                             alt=""
                         />
-                    </div>
-                    <div>
+                    </Cards>
+                    <Cards>
                         <img
                             style={{ width: 100, height: 100 }}
                             src={baseURL + movieDetails.backdrop_path}
                             alt=""
                         />
-                    </div>
-                    <div>
-                        <img
-                            style={{ width: 100, height: 100 }}
-                            src={baseURL + movieDetails.backdrop_path}
-                            alt=""
-                        />
-                    </div>
+                    </Cards>
+                    <Cards>{renderReviews()}</Cards>
                 </MovieBlockCard>
                 <MovieBlockCard>
-                    <img
-                        style={{ width: 100, height: 100 }}
-                        src={baseURL + movieDetails.backdrop_path}
-                        alt=""
-                    />
+                    <Cards>
+                        <img
+                            style={{ width: 100, height: 100 }}
+                            src={baseURL + movieDetails.backdrop_path}
+                            alt=""
+                        />
+                    </Cards>
                 </MovieBlockCard>
             </MovieBlock>
             <Trial />
