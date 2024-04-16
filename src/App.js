@@ -12,7 +12,6 @@ import Home from "./Components/Home/Home";
 import axios from "axios";
 
 const App = () => {
-    const location = useLocation();
     const {
         movieGenres,
         movieListGenres,
@@ -28,14 +27,7 @@ const App = () => {
         getUpcoming,
     } = useMovieRequest();
 
-    const getActivePage = (pathname) => {
-        if (pathname === "/") return "home";
-        else if (pathname === "/movie") return "movie";
-        else if (pathname === "/support") return "support";
-        else if (pathname === "/subscriptions") return "subscriptions";
-        else return null;
-    };
-    const [isActive, setIsActive] = useState(getActivePage(location.pathname));
+    const [isActive, setIsActive] = useState("home");
     useEffect(() => {
         movieGenres();
         trendingMovies();
@@ -43,9 +35,7 @@ const App = () => {
         topRatedMovies();
         upComingMovies();
     }, []);
-    useEffect(() => {
-        setIsActive(getActivePage(location.pathname));
-    }, [location]);
+
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
