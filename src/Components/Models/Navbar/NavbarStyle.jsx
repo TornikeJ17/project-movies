@@ -52,6 +52,11 @@ export const NavbarMenu = styled.div`
         text-decoration:none;
     }
     }
+    .NavLinkActive{
+        background:#1a1a1a;
+        border: 1px solid var(--Black-10, #1a1a1a);
+        border-radius: 8px;
+    }
 `;
 
 export const NavbarSearch = styled.div`

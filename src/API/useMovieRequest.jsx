@@ -7,7 +7,7 @@ const Authorization =
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmJkZTJiMDYzN2RkMWMxOTM1ZTdmOGI2YzhmZjVlYyIsInN1YiI6IjY1ZmQ4ZTRjNzcwNzAwMDE2MzA4OWY3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Iy-N0kgmU2wyzEHwQR4r9sm-DyDHMlrbPsllQFEInqs";
 // const baseURL = "https://image.tmdb.org/t/p/original";
 
-const useRequest = () => {
+const useMovieRequest = () => {
     const [getGenres, setGetGenres] = useState([]);
     const [moviesByGenre, setMoviesByGenre] = useState([]);
     const [getTrending, setGetTrending] = useState([]);
@@ -30,7 +30,6 @@ const useRequest = () => {
         return getGenre;
     };
     const movieListGenres = async (genreId) => {
-        console.log(genreId, "ganre");
         try {
             const getMovies = await axios.get(API_URL + "discover/movie", {
                 params: {
@@ -122,4 +121,4 @@ const useRequest = () => {
     };
 };
 
-export default useRequest;
+export default useMovieRequest;

@@ -11,6 +11,7 @@ import {
 import Header from "../Header/Header";
 import SliderHeader from "../SliderHeader/SliderHeader";
 import { icons } from "../../../API/svgFiles";
+import Ratings from "../Ratings/Ratings";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const ContentWithSlider = ({
@@ -56,8 +57,6 @@ const ContentWithSlider = ({
                 />
             </Header>
             <CategoriesSlideBlock isActive={isActive}>
-                {console.log("First", firstArray)}
-                {console.log("Second", secondArray)}
                 {firstArray
                     ?.slice(startIndex, startIndex + itemsPerPage)
                     .map((item, index) => (
@@ -94,20 +93,7 @@ const ContentWithSlider = ({
                                             gridTemplateColumns: "1fr 1fr",
                                         }}
                                     >
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                padding: "6px 10px 6px 6px",
-                                                alignItems: "center",
-                                                gap: "4px",
-                                                borderRadius: "51px",
-                                                border: "1px solid var(--Black-15, #262626)",
-                                                background: "#141414",
-                                            }}
-                                        >
-                                            {icons[4].svg}
-                                            {Math.ceil(item.vote_average)}
-                                        </div>
+                                        <Ratings rating={item.vote_average} />
                                         <div
                                             style={{
                                                 display: "flex",

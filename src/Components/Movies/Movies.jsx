@@ -15,7 +15,6 @@ const Movies = ({
 }) => {
     return (
         <Container>
-            {console.log("getTopRated", getTopRated)}
             <BlockContainer className="movies">
                 <ContentWithSlider
                     HeaderTitle={`Our Genres`}

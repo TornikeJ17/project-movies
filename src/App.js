@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useRequest from "./API/useRequest";
+import useMovieRequest from "./API/useMovieRequest";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { GlobalStyle, Main, AppContainer } from "./Components/Styles/Styles";
 
@@ -14,7 +14,6 @@ import axios from "axios";
 const App = () => {
     const location = useLocation();
     const {
-        baseURL,
         movieGenres,
         movieListGenres,
         moviesByGenre,
@@ -27,20 +26,16 @@ const App = () => {
         getTopRated,
         upComingMovies,
         getUpcoming,
-    } = useRequest();
+    } = useMovieRequest();
 
     const getActivePage = (pathname) => {
         if (pathname === "/") return "home";
         else if (pathname === "/movie") return "movie";
         else if (pathname === "/support") return "support";
         else if (pathname === "/subscriptions") return "subscriptions";
-        else return "home";
+        else return null;
     };
-    const [isActive, setIsActive] = useState("home");
-    console.log(getGenres, "genres");
-    console.log(getTrending, "trending");
-    console.log(location.pathname);
-    console.log(isActive, "isActive");
+    const [isActive, setIsActive] = useState(getActivePage(location.pathname));
     useEffect(() => {
         movieGenres();
         trendingMovies();
@@ -48,6 +43,9 @@ const App = () => {
         topRatedMovies();
         upComingMovies();
     }, []);
+    useEffect(() => {
+        setIsActive(getActivePage(location.pathname));
+    }, [location]);
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />

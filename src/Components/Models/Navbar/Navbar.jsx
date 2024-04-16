@@ -10,12 +10,13 @@ import {
     MenuItem,
     HamburgerMenu,
 } from "./NavbarStyle";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { images, menuItems, navbar } from "../../../API/svgFiles";
 const Navbar = ({ isActive, setIsActive }) => {
     const handleClick = (id) => {
         setIsActive(id);
+        console.log(id, "active Index");
     };
     return (
         <>
@@ -188,15 +189,21 @@ const Navbar = ({ isActive, setIsActive }) => {
                 <NavbarLogo>{navbar[0].svg}</NavbarLogo>
                 <NavbarMenu>
                     {menuItems.map((item, index) => (
-                        <Link to={item.url} key={index}>
+                        <NavLink
+                            to={item.url}
+                            key={index}
+                            className={({ isActive }) =>
+                                !isActive ? "Navlink" : "NavLinkActive"
+                            }
+                        >
                             <MenuItem
                                 key={item.id}
-                                isActive={item.id === isActive}
+                                // isActive={item.id === isActive}
                                 onClick={() => handleClick(item.id)}
                             >
                                 {item.label}
                             </MenuItem>
-                        </Link>
+                        </NavLink>
                     ))}
                 </NavbarMenu>
                 <NavbarSearch>
