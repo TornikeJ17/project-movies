@@ -13,6 +13,7 @@ import {
 import Trial from "../../Models/Trial/Trial";
 import Reviews from "../../Models/Reviews/Reviews";
 import Casts from "../../Models/Casts/Casts";
+import Description from "../../Models/Description/Description";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const MoviesPage = () => {
@@ -64,7 +65,7 @@ const MoviesPage = () => {
 
             <MovieBlock>
                 <MovieBlockCard>
-                    <Cards></Cards>
+                    <Description descriptionText={movieDetails.overview} />
                     <Casts castData={movieCasts} />
                     <Reviews reviewData={movieReviews} />
                 </MovieBlockCard>

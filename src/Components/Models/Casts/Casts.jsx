@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 
-import { CastsContainer } from "./CastsStyle";
+import {
+    CastsContainer,
+    CastsSubContainer,
+    CastsBlock,
+    CastsTitle,
+    ButtonBlock,
+    CastImage,
+    CastButton,
+} from "./CastsStyle";
+import { icons } from "../../../API/svgFiles";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const Casts = ({ castData }) => {
@@ -23,22 +32,24 @@ const Casts = ({ castData }) => {
     };
     return (
         <CastsContainer>
-            {castData
-                ?.slice(startIndex, startIndex + itemsPerPage)
-                .map((castItem) => (
-                    <div>
-                        {console.log(castItem, "safafafa")}
-                        <img
-                            style={{
-                                width: 100,
-                                height: 87.5,
-                            }}
-                            src={baseURL + castItem.profile_path}
-                        />
-                    </div>
-                ))}
-            <button onClick={() => handleLeftClick()}>back</button>
-            <button onClick={() => handleRightClick()}>next</button>
+            <CastsSubContainer>
+                <CastsTitle>Cast</CastsTitle>
+                <ButtonBlock>
+                    <CastButton onClick={() => handleLeftClick()}>
+                        {icons[3].svg}
+                    </CastButton>
+                    <CastButton onClick={() => handleRightClick()}>
+                        {icons[2].svg}
+                    </CastButton>
+                </ButtonBlock>
+            </CastsSubContainer>
+            <CastsBlock>
+                {castData
+                    ?.slice(startIndex, startIndex + itemsPerPage)
+                    .map((castItem) => (
+                        <CastImage src={baseURL + castItem.profile_path} />
+                    ))}
+            </CastsBlock>
         </CastsContainer>
     );
 };

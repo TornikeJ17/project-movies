@@ -2,12 +2,50 @@ import styled from "styled-components";
 
 export const CastsContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 20px;
-    padding: 50px;
-    align-self: stretch;
+    background: var(--Black-10, #1a1a1a);
     border-radius: 12px;
     border: 1px solid var(--Black-15, #262626);
-    background: var(--Black-10, #1a1a1a);
     max-height: 233px;
+    padding: 50px;
+    gap: 20px;
+`;
+export const CastsSubContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+`;
+export const CastsBlock = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    align-self: stretch;
+`;
+export const CastsTitle = styled.div`
+    color: #999;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+`;
+export const ButtonBlock = styled.div`
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 8px;
+    cursor: pointer;
+`;
+export const CastButton = styled.div`
+    display:grid;
+    padding:12px;
+    align-items:center;
+    gap::10px;
+    border-radius: 100px;
+    border: 1px solid #262626;
+    background: #141414;
+    
+`;
+export const CastImage = styled.img`
+    width: 100px;
+    height: 85.5px;
+    border-radius: 10px;
 `;
