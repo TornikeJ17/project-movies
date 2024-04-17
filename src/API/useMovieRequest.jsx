@@ -39,10 +39,13 @@ const useMovieRequest = () => {
                     Authorization,
                 },
             });
-            setMoviesByGenre((prevMovies) => ({
-                ...prevMovies,
-                [genreId]: getMovies.data.results,
-            }));
+            const movies = getMovies.data.results;
+            if (movies.length) {
+                setMoviesByGenre((prevMovies) => ({
+                    ...prevMovies,
+                    [genreId]: getMovies.data.results,
+                }));
+            }
         } catch (error) {
             console.log(error);
         }

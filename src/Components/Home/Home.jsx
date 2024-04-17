@@ -42,7 +42,10 @@ const Home = ({ genres, movieListGenres, moviesByGenre, isActive }) => {
                     movieListGenres(item.id);
                 });
             }
+            console.log(genres.genres, "genres");
         }, [genres.genres]);
+        console.log("moviesByGenre", moviesByGenre);
+
         return (
             <ContentWithSlider
                 HeaderTitle={`Explore our wide variety of categories`}
