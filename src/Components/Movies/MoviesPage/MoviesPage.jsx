@@ -11,31 +11,18 @@ import {
     Cards,
 } from "./MoviesPageStyle";
 import Trial from "../../Models/Trial/Trial";
-import Ratings from "../../Models/Ratings/Ratings";
+import Reviews from "../../Models/Reviews/Reviews";
+import Casts from "../../Models/Casts/Casts";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const MoviesPage = () => {
     const { id } = useParams();
     const [movieDetails, setMovieDetails] = useState(null);
     const [movieReviews, setMovieReviews] = useState([]);
-    const { fetchMovieDetails, fetchMovieReviews } = useMovieRequest(); // Access the function from the hook
-    const [startIndex, setStartIndex] = useState(0);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const itemsPerPage = 2;
-    const totalPages = Math.ceil(movieReviews?.length / itemsPerPage);
-    const handleLeftClick = () => {
-        if (startIndex > 0) {
-            setStartIndex(startIndex - itemsPerPage);
-            setActiveIndex(activeIndex - 1);
-        }
-    };
+    const [movieCasts, setMovieCasts] = useState([]);
+    const { fetchMovieDetails, fetchMovieReviews, fetchMovieCasts } =
+        useMovieRequest(); // Access the function from the hook
 
-    const handleRightClick = () => {
-        if (startIndex < movieReviews?.length - itemsPerPage) {
-            setStartIndex(startIndex + itemsPerPage);
-            setActiveIndex(activeIndex + 1);
-        }
-    };
     useEffect(() => {
         fetchMovieDetails(id).then((data) => {
             console.log(data);
@@ -44,8 +31,11 @@ const MoviesPage = () => {
         fetchMovieReviews(id).then((data) => {
             setMovieReviews(data);
         });
-        console.log(movieDetails);
+        fetchMovieCasts(id).then((data) => {
+            setMovieCasts(data);
+        });
         console.log(movieReviews, "movieReviews");
+        console.log(movieCasts, "movieCasts");
     }, [id]);
 
     if (!movieDetails) {
@@ -65,23 +55,6 @@ const MoviesPage = () => {
         return <div></div>;
     };
 
-    const renderReviews = () => {
-        return movieReviews
-            ?.slice(startIndex, startIndex + itemsPerPage)
-            .map((reviewItem, index) => (
-                <ReviewCard>
-                    <div>
-                        <div>{reviewItem.author}</div>
-                        <div>
-                            <Ratings
-                                rating={reviewItem?.author_details?.rating}
-                            />
-                        </div>
-                    </div>
-                    <span>{reviewItem.content}</span>
-                </ReviewCard>
-            ));
-    };
     const renderDetailsMovie = () => {
         return <div></div>;
     };
@@ -92,24 +65,8 @@ const MoviesPage = () => {
             <MovieBlock>
                 <MovieBlockCard>
                     <Cards></Cards>
-                    <Cards>
-                        <img
-                            style={{ width: 100, height: 100 }}
-                            src={baseURL + movieDetails.backdrop_path}
-                            alt=""
-                        />
-                    </Cards>
-                    <Cards>
-                        {renderReviews()}
-                        <div>
-                            <button onClick={() => handleLeftClick()}>
-                                back
-                            </button>
-                            <button onClick={() => handleRightClick()}>
-                                next
-                            </button>
-                        </div>
-                    </Cards>
+                    <Casts castData={movieCasts} />
+                    <Reviews reviewData={movieReviews} />
                 </MovieBlockCard>
                 <MovieBlockCard>
                     <Cards>

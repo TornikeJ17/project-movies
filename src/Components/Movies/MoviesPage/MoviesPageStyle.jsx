@@ -24,7 +24,7 @@ export const MovieBlock = styled.div`
 `;
 export const MovieBlockCard = styled.div`
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
 `;
 export const ReviewCard = styled.div`
