@@ -7,6 +7,7 @@ import {
     ReviewButton,
     ReviewIndicator,
     ReviewRatingBlock,
+    ReviewTitle,
 } from "./ReviewsStyle";
 import Ratings from "../Ratings/Ratings";
 import { icons } from "../../../API/svgFiles";
@@ -39,6 +40,7 @@ const Reviews = ({ reviewData }) => {
     };
     return (
         <ReviewsContainer>
+            <ReviewTitle>Reviews</ReviewTitle>
             <ReviewsContainerBlock>
                 {reviewData
                     ?.slice(startIndex, startIndex + itemsPerPage)

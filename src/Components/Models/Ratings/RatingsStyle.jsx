@@ -17,3 +17,11 @@ export const StarBlock = styled.div`
         }
     }
 `;
+export const RatingText = styled.span`
+    color: var(--Grey-60, #999);
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 27px */
+`;

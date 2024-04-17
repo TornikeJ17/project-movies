@@ -1,5 +1,5 @@
 import React from "react";
-import { RatingContainer } from "./RatingsStyle";
+import { RatingContainer, RatingText } from "./RatingsStyle";
 import StarIcon from "./StarIcon";
 const Ratings = ({ rating }) => {
     const indexRating = 5;
@@ -19,7 +19,12 @@ const Ratings = ({ rating }) => {
         }
         return ratingArr;
     };
-    return <RatingContainer>{handleRating()}</RatingContainer>;
+    return (
+        <RatingContainer>
+            {handleRating()}
+            <RatingText>{rating}</RatingText>
+        </RatingContainer>
+    );
 };
 
 export default Ratings;
