@@ -22,6 +22,7 @@ const ContentWithSlider = ({
     HeaderTitle,
     HeaderText,
     onClickFunction,
+    isMovieContext,
 }) => {
     const navigate = useNavigate();
     const [startIndex, setStartIndex] = useState(0);
@@ -42,8 +43,10 @@ const ContentWithSlider = ({
         }
     };
     const listMovies = (id) => {
-        console.log(id);
-        navigate("/Movie/" + id.id);
+        const path = !isMovieContext
+            ? `/movie-shows/movie/${id.id}`
+            : `/movie-shows/show/${id.id}`;
+        navigate(path);
     };
     useEffect(() => {
         if (firstArray) {

@@ -12,6 +12,7 @@ import Home from "./Components/Home/Home";
 import axios from "axios";
 import useShowRequest from "./API/useShowRequest";
 import MoviesPage from "./Components/Movies/MoviesPage/MoviesPage";
+import ShowsPage from "./Components/Movies/ShowsPage/ShowsPage";
 
 const App = () => {
     const {
@@ -27,7 +28,6 @@ const App = () => {
         getTopRated,
         upComingMovies,
         getUpcoming,
-        fetchMovieDetails,
     } = useMovieRequest();
     const {
         showsGenres,
@@ -77,7 +77,7 @@ const App = () => {
                         }
                     />
                     <Route
-                        path="/movie"
+                        path="/movie-shows"
                         element={
                             <Movies
                                 //movies
@@ -88,7 +88,6 @@ const App = () => {
                                 getPopular={getPopular}
                                 getTopRated={getTopRated}
                                 getUpcoming={getUpcoming}
-                                fetchMovieDetails={fetchMovieDetails}
                                 //shows
                                 showsListGenres={showsListGenres}
                                 getShowGenres={getShowGenres}
@@ -101,10 +100,12 @@ const App = () => {
                         }
                     />
                     <Route
-                        path="/movie/:id"
-                        element={
-                            <MoviesPage fetchMovieDetails={fetchMovieDetails} />
-                        }
+                        path="/movie-shows/movie/:id"
+                        element={<MoviesPage />}
+                    />
+                    <Route
+                        path="/movie-shows/show/:id"
+                        element={<ShowsPage />}
                     />
                     <Route path="/support" element={<Support />} />
                     <Route path="/subscriptions" element={<Subscriptions />} />

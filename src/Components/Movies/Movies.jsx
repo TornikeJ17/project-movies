@@ -22,7 +22,9 @@ const Movies = ({
     getShowsPopular,
     getTopShowsRated,
     getShowsAiring,
+    fetchShowsDetails,
 }) => {
+    const isMovieContext = false;
     return (
         <Container>
             <BlockContainer className="movies">
@@ -34,6 +36,7 @@ const Movies = ({
                     firstArray={genres?.genres}
                     secondArray={moviesByGenre}
                     onClickFunction={movieListGenres}
+                    isMovieContext={isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Trending Now`}
@@ -44,6 +47,7 @@ const Movies = ({
                     secondArray={"-1"}
                     onClickFunction={movieListGenres}
                     fetchMovieDetails={fetchMovieDetails}
+                    isMovieContext={isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Popular`}
@@ -53,6 +57,8 @@ const Movies = ({
                     firstArray={getPopular}
                     secondArray={"-1"}
                     onClickFunction={movieListGenres}
+                    fetchMovieDetails={fetchMovieDetails}
+                    isMovieContext={isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Top Rated`}
@@ -62,6 +68,8 @@ const Movies = ({
                     firstArray={getTopRated}
                     secondArray={"-1"}
                     onClickFunction={movieListGenres}
+                    fetchMovieDetails={fetchMovieDetails}
+                    isMovieContext={isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Upcoming `}
@@ -71,6 +79,8 @@ const Movies = ({
                     firstArray={getUpcoming}
                     secondArray={"-1"}
                     onClickFunction={movieListGenres}
+                    fetchMovieDetails={fetchMovieDetails}
+                    isMovieContext={isMovieContext}
                 />
             </BlockContainer>
             <BlockContainer className="shows">
@@ -82,6 +92,7 @@ const Movies = ({
                     firstArray={getShowGenres?.genres}
                     secondArray={showsByGenre}
                     onClickFunction={showsListGenres}
+                    isMovieContext={!isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Our Genres`}
@@ -91,6 +102,8 @@ const Movies = ({
                     firstArray={getShowsTrending}
                     secondArray={"-1"}
                     onClickFunction={showsListGenres}
+                    fetchShowsDetails={fetchShowsDetails}
+                    isMovieContext={!isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Our Genres`}
@@ -100,6 +113,8 @@ const Movies = ({
                     firstArray={getShowsPopular}
                     secondArray={"-1"}
                     onClickFunction={showsListGenres}
+                    fetchShowsDetails={fetchShowsDetails}
+                    isMovieContext={!isMovieContext}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Our Genres`}
@@ -109,15 +124,8 @@ const Movies = ({
                     firstArray={getTopShowsRated}
                     secondArray={"-1"}
                     onClickFunction={showsListGenres}
-                />
-                <ContentWithSlider
-                    HeaderTitle={`Our Genres`}
-                    HeaderText={`Whether you're looking for a comedy to make you
-                laugh, a drama to make you think, or a documentary
-                to learn something new`}
-                    firstArray={getShowGenres?.genres}
-                    secondArray={showsByGenre}
-                    onClickFunction={showsListGenres}
+                    fetchShowsDetails={fetchShowsDetails}
+                    isMovieContext={!isMovieContext}
                 />
             </BlockContainer>
             <Trial />

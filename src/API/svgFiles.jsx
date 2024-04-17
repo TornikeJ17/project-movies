@@ -780,7 +780,7 @@ const icons = [
 ];
 const menuItems = [
     { id: "home", label: "Home", url: "" },
-    { id: "movie", label: "Movie & Shows ", url: "Movie" },
+    { id: "movie-shows", label: "Movie & Shows ", url: "movie-shows" },
     { id: "Support", label: "Support ", url: "Support" },
     { id: "Subscriptions", label: "Subscriptions ", url: "Subscriptions" },
 ];

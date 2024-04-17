@@ -38,10 +38,13 @@ const useShowRequest = () => {
                     Authorization,
                 },
             });
-            setShowsByGenre((prevShows) => ({
-                ...prevShows,
-                [genreId]: getShows.data.results,
-            }));
+            const shows = getShows.data.results;
+            if (shows.length) {
+                setShowsByGenre((prevShows) => ({
+                    ...prevShows,
+                    [genreId]: getShows.data.results,
+                }));
+            }
         } catch (error) {
             console.log(error);
         }
@@ -102,6 +105,51 @@ const useShowRequest = () => {
             });
         return getAiringShows;
     };
+    const fetchShowsDetails = async (id) => {
+        try {
+            const response = await axios.get(`${API_URL}tv/${id}`, {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching movie details:", error);
+            throw error;
+        }
+    };
+    const fetchShowsReviews = async (id) => {
+        console.log(id);
+        try {
+            const response = await axios.get(`${API_URL}tv/${id}/reviews`, {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            console.log(response.data.results, "review response");
+            return response.data.results;
+        } catch (error) {
+            console.log("Error fetching movie reviews:", error);
+            throw error;
+        }
+    };
+    const fetchShowsCasts = async (id) => {
+        try {
+            const response = await axios.get(`${API_URL}tv/${id}/credits`, {
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            console.log("casts", response);
+            return response.data.cast;
+        } catch (error) {
+            console.log("Error fetching movie casts:", error);
+            throw error;
+        }
+    };
     return {
         showsGenres,
         showsListGenres,
@@ -115,6 +163,9 @@ const useShowRequest = () => {
         getShowsPopular,
         getTopShowsRated,
         getShowsAiring,
+        fetchShowsDetails,
+        fetchShowsReviews,
+        fetchShowsCasts,
     };
 };
 
