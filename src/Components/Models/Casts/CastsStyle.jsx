@@ -18,7 +18,6 @@ export const CastsBlock = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 20px;
-    align-self: stretch;
 `;
 export const CastsTitle = styled.div`
     color: #999;
@@ -46,6 +45,8 @@ export const CastButton = styled.div`
 `;
 export const CastImage = styled.img`
     width: 100px;
-    height: 85.5px;
-    border-radius: 10px;
+    height: 139px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
 `;

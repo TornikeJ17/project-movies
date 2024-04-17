@@ -22,7 +22,7 @@ export const CategoriesSlideCard = styled.div`
             : "repeat(auto-fit, minmax(115px, 1fr))"};
     gap: 4px;
     padding: 27px;
-    height: 275px;
+    height: 287px;
     border-radius: 12px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-10, #1a1a1a);
@@ -38,7 +38,7 @@ export const ImageBlock = styled.div`
 export const Image = styled.img`
     width: 100%;
     height: ${({ height }) => (height > 0 ? "250px" : "123px")};
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 12px;
     opacity: 0.5;
 `;
