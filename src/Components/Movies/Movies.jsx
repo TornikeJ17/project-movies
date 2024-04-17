@@ -95,7 +95,18 @@ const Movies = ({
                     isMovieContext={!isMovieContext}
                 />
                 <ContentWithSlider
-                    HeaderTitle={`Our Genres`}
+                    HeaderTitle={`Airing Today`}
+                    HeaderText={`Whether you're looking for a comedy to make you
+                laugh, a drama to make you think, or a documentary
+                to learn something new`}
+                    firstArray={getShowsAiring}
+                    secondArray={"-1"}
+                    onClickFunction={showsListGenres}
+                    fetchShowsDetails={fetchShowsDetails}
+                    isMovieContext={!isMovieContext}
+                />
+                <ContentWithSlider
+                    HeaderTitle={`Trending Now`}
                     HeaderText={`Whether you're looking for a comedy to make you
                 laugh, a drama to make you think, or a documentary
                 to learn something new`}
@@ -106,7 +117,7 @@ const Movies = ({
                     isMovieContext={!isMovieContext}
                 />
                 <ContentWithSlider
-                    HeaderTitle={`Our Genres`}
+                    HeaderTitle={`Popular`}
                     HeaderText={`Whether you're looking for a comedy to make you
                 laugh, a drama to make you think, or a documentary
                 to learn something new`}
@@ -117,7 +128,7 @@ const Movies = ({
                     isMovieContext={!isMovieContext}
                 />
                 <ContentWithSlider
-                    HeaderTitle={`Our Genres`}
+                    HeaderTitle={`Top Rated`}
                     HeaderText={`Whether you're looking for a comedy to make you
                 laugh, a drama to make you think, or a documentary
                 to learn something new`}
