@@ -238,9 +238,9 @@ const Navbar = ({ isActive, setIsActive }) => {
                             fill="white"
                         />
                     </svg> */}
-                    {/* <div>{navbar[1].svg}</div>
-                    <div>{navbar[2].svg}</div> */}
-                    <HamburgerMenu>{navbar[3].svg}</HamburgerMenu>
+                    <div>{navbar[1].svg}</div>
+                    <div>{navbar[2].svg}</div>
+                    {/* <HamburgerMenu>{navbar[3].svg}</HamburgerMenu> */}
                 </NavbarSearch>
             </NavContainer>
         </>

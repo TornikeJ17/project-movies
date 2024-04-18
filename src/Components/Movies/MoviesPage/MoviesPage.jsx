@@ -19,6 +19,7 @@ import Reviews from "../../Models/Reviews/Reviews";
 import Casts from "../../Models/Casts/Casts";
 import Description from "../../Models/Description/Description";
 import { icons } from "../../../API/svgFiles";
+import Ratings from "../../Models/Ratings/Ratings";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const MoviesPage = () => {
@@ -54,16 +55,7 @@ const MoviesPage = () => {
             </Poster>
         );
     };
-    const renderDescription = () => {
-        return <div></div>;
-    };
-    const renderCast = () => {
-        return <div></div>;
-    };
 
-    const renderDetailsMovie = () => {
-        return <div></div>;
-    };
     return (
         <MoviesPageContainer>
             {renderPosterWithTitle()}
@@ -96,6 +88,7 @@ const MoviesPage = () => {
                         </CardsBlock>
                         <CardsBlock>
                             <Titles children={"Ratings"} icons={icons[4].svg} />
+                            <Ratings rating={movieDetails.vote_average} />
                         </CardsBlock>
                         <CardsBlock>
                             <Titles children={"Genres"} icons={icons[9].svg} />
@@ -111,10 +104,14 @@ const MoviesPage = () => {
                                 {console.log("movie casts", movieCasts.crew)}
                                 {movieCasts.crew?.slice(0, 1)?.map((item) => (
                                     <LanguagesBlock>
-                                        <Image
-                                            src={baseURL + item.profile_path}
-                                            alt=""
-                                        />
+                                        {item.profile_path && (
+                                            <Image
+                                                src={
+                                                    baseURL + item.profile_path
+                                                }
+                                                alt=""
+                                            />
+                                        )}
                                         {item.name}
                                     </LanguagesBlock>
                                 ))}
