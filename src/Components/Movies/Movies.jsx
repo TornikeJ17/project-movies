@@ -27,6 +27,7 @@ const Movies = ({
     const isMovieContext = false;
     return (
         <Container>
+            {/* Movies */}
             <BlockContainer className="movies">
                 <ContentWithSlider
                     HeaderTitle={`Our Genres`}
@@ -83,6 +84,7 @@ const Movies = ({
                     isMovieContext={isMovieContext}
                 />
             </BlockContainer>
+            {/* Shows */}
             <BlockContainer className="shows">
                 <ContentWithSlider
                     HeaderTitle={`Our Genres`}

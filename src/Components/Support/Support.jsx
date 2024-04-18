@@ -6,7 +6,11 @@ import {
     SupportTitleBlock,
     SupportTitle,
     SupportText,
+    SubContainer,
+    SubContainerBlock,
+    ImageBlock,
 } from "./SupportStyle";
+import { images } from "../../API/svgFiles";
 import Trial from "../Models/Trial/Trial";
 import Questions from "../Models/Questions/Questions";
 const Support = () => {
@@ -23,7 +27,62 @@ const Support = () => {
                             having with our product.
                         </SupportText>
                     </SupportTitleBlock>
-                    <div>image block</div>
+                    <SubContainer>
+                        <SubContainerBlock>
+                            <div>
+                                {images.map((item, indexItem) =>
+                                    item.name
+                                        .slice(0, 4)
+                                        .map((img, index) => (
+                                            <ImageBlock
+                                                key={index + 1}
+                                                index={index}
+                                                image={img.URL}
+                                            ></ImageBlock>
+                                        ))
+                                )}
+                            </div>
+                            <div>
+                                {images.map((item, index) =>
+                                    item.name
+                                        .slice(4, 8)
+                                        .map((img, index) => (
+                                            <ImageBlock
+                                                key={index}
+                                                index={index + 2}
+                                                image={img.URL}
+                                            ></ImageBlock>
+                                        ))
+                                )}
+                            </div>
+                            <div>
+                                {images.map((item, index) =>
+                                    item.name
+                                        .slice(8, 12)
+                                        .map((img, index) => (
+                                            <ImageBlock
+                                                key={index}
+                                                index={index + 3}
+                                                image={img.URL}
+                                            ></ImageBlock>
+                                        ))
+                                )}
+                            </div>
+                            <div>
+                                {images.map((item, index) =>
+                                    item.name
+                                        .slice(12, 16)
+                                        .map((img, index) => (
+                                            <ImageBlock
+                                                index={index + 4}
+                                                key={index}
+                                                image={img.URL}
+                                            ></ImageBlock>
+                                        ))
+                                )}
+                            </div>
+                        </SubContainerBlock>
+                    </SubContainer>
                 </SupportBlock>
                 <SupportBlock isForm={true}>
                     <form>
