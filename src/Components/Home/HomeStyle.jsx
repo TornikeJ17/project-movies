@@ -17,7 +17,7 @@ export const CategoriesSlideCard = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
     gap: 4px;
     padding: 30px;
-    height: 275px;
+    height: 284px;
     border-radius: 12px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-10, #1a1a1a);

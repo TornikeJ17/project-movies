@@ -1,8 +1,13 @@
 import React from "react";
 import { TitleContainer } from "./TitlesStyle";
 
-const Titles = ({ children }) => {
-    return <TitleContainer>{children}</TitleContainer>;
+const Titles = ({ children, icons }) => {
+    return (
+        <TitleContainer>
+            {icons}
+            {children}
+        </TitleContainer>
+    );
 };
 
 export default Titles;

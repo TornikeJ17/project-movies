@@ -8,11 +8,16 @@ import {
     ShowsBlock,
     ShowsBlockCard,
     Cards,
+    CardsBlock,
+    LanguagesContainer,
+    LanguagesBlock,
 } from "./ShowsPageStyle";
 import Trial from "../../Models/Trial/Trial";
 import Reviews from "../../Models/Reviews/Reviews";
 import Casts from "../../Models/Casts/Casts";
 import Description from "../../Models/Description/Description";
+import Titles from "../../Models/Titles/Titles";
+import { icons } from "../../../API/svgFiles";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const ShowsPage = () => {
@@ -61,11 +66,56 @@ const ShowsPage = () => {
                 </ShowsBlockCard>
                 <ShowsBlockCard>
                     <Cards>
-                        <img
-                            style={{ width: 100, height: 100 }}
-                            src={baseURL + showsDetails.backdrop_path}
-                            alt=""
-                        />
+                        <CardsBlock>
+                            <Titles
+                                children={"Released Year"}
+                                icons={icons[7].svg}
+                            />
+                            {showsDetails.first_air_date.slice(0, 4)}
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles
+                                children={"Available Languages"}
+                                icons={icons[8].svg}
+                            />
+                            <LanguagesContainer>
+                                {showsDetails.spoken_languages.map((item) => (
+                                    <LanguagesBlock>{item.name}</LanguagesBlock>
+                                ))}
+                            </LanguagesContainer>
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Ratings"} icons={icons[4].svg} />
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Genres"} icons={icons[9].svg} />
+                            <LanguagesContainer>
+                                {showsDetails.genres.map((item) => (
+                                    <LanguagesBlock>{item.name}</LanguagesBlock>
+                                ))}
+                            </LanguagesContainer>
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Director"} />
+                            <LanguagesContainer>
+                                {showsDetails.created_by.map((item) => (
+                                    <LanguagesBlock>
+                                        <img
+                                            style={{
+                                                width: 100,
+                                                height: 100,
+                                            }}
+                                            src={baseURL + item.profile_path}
+                                            alt=""
+                                        />
+                                        {item.name}
+                                    </LanguagesBlock>
+                                ))}
+                            </LanguagesContainer>
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Music"} />
+                        </CardsBlock>
                     </Cards>
                 </ShowsBlockCard>
             </ShowsBlock>

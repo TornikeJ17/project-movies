@@ -38,3 +38,27 @@ export const Cards = styled.div`
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-10, #1a1a1a);
 `;
+export const CardsBlock = styled.div`
+    display: grid;
+    gap: 20px;
+`;
+export const LanguagesContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+`;
+export const LanguagesBlock = styled.div`
+    display: grid;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--Black-15, #262626);
+    background: var(--Black-08, #141414);
+    color: var(--Absolute-White, #fff);
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+`;
