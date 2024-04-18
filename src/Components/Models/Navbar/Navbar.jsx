@@ -13,6 +13,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 import { images, menuItems, navbar } from "../../../API/svgFiles";
+import UseSearchRequest from "../../../API/useSearchRequest";
 const Navbar = ({ isActive, setIsActive }) => {
     const handleClick = (id) => {
         setIsActive(id);
@@ -88,8 +89,10 @@ const Navbar = ({ isActive, setIsActive }) => {
                             fill="white"
                         />
                     </svg> */}
-                    <div>{navbar[1].svg}</div>
+                    {/* <div>{navbar[1].svg}</div> */}
+                    <UseSearchRequest />
                     <div>{navbar[2].svg}</div>
+
                     {/* <HamburgerMenu>{navbar[3].svg}</HamburgerMenu> */}
                 </NavbarSearch>
             </NavContainer>

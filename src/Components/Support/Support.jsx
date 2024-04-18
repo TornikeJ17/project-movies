@@ -49,7 +49,7 @@ const Support = () => {
                                         .map((img, index) => (
                                             <ImageBlock
                                                 key={index}
-                                                index={index + 2}
+                                                index={index + 4}
                                                 image={img.URL}
                                             ></ImageBlock>
                                         ))
@@ -62,7 +62,7 @@ const Support = () => {
                                         .map((img, index) => (
                                             <ImageBlock
                                                 key={index}
-                                                index={index + 3}
+                                                index={index + 8}
                                                 image={img.URL}
                                             ></ImageBlock>
                                         ))
@@ -74,7 +74,7 @@ const Support = () => {
                                         .slice(12, 16)
                                         .map((img, index) => (
                                             <ImageBlock
-                                                index={index + 4}
+                                                index={index + 12}
                                                 key={index}
                                                 image={img.URL}
                                             ></ImageBlock>

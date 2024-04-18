@@ -11,6 +11,8 @@ export const SupportBlock = styled.div`
     border: ${({ isForm }) =>
         isForm ? "1px solid var(--Black-15, #262626)" : null};
     background: ${({ isForm }) => (isForm ? "#0F0F0F" : null)};
+    display: grid;
+    gap: 20px;
     form {
         input {
             display: flex;
@@ -51,7 +53,7 @@ export const SubContainer = styled.div`
     border: 6px solid var(--Black-15, #262626);
     background: var(--Black-06, #0f0f0f);
     position: relative;
-    height: 400px;
+    height: 477px;
 `;
 export const SubContainerBlock = styled.div`
     display: flex;
@@ -79,7 +81,15 @@ export const ImageBlock = styled.div`
         (index === 4 && "40px") ||
         (index === 5 && "40px") ||
         (index === 6 && "40px") ||
-        (index === 7 && "40px")};
+        (index === 7 && "40px") ||
+        (index === 8 && "220px") ||
+        (index === 9 && "220px") ||
+        (index === 10 && "220px") ||
+        (index === 11 && "220px") ||
+        (index === 12 && "420px") ||
+        (index === 13 && "420px") ||
+        (index === 14 && "420px") ||
+        (index === 15 && "420px")};
     left: ${({ index }) =>
         (index === 0 && "-45px") ||
         (index === 1 && "105px") ||
@@ -88,7 +98,15 @@ export const ImageBlock = styled.div`
         (index === 4 && "-45px") ||
         (index === 5 && "105px") ||
         (index === 6 && "255px") ||
-        (index === 7 && "405px")};
+        (index === 7 && "405px") ||
+        (index === 8 && "405px") ||
+        (index === 9 && "255px") ||
+        (index === 10 && "105px") ||
+        (index === 11 && "-45px") ||
+        (index === 12 && "405px") ||
+        (index === 13 && "255px") ||
+        (index === 14 && "105px") ||
+        (index === 15 && "-45px")};
     width: 135.25px;
     height: 168.25px;
     flex: 1 0 0;
