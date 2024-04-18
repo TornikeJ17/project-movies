@@ -1,13 +1,10 @@
 import React from "react";
-import {
-    DescriptionContainer,
-    DescriptionTitle,
-    DescriptionText,
-} from "./DescriptionStyle";
+import { DescriptionContainer, DescriptionText } from "./DescriptionStyle";
+import Titles from "../Titles/Titles";
 const Description = ({ descriptionText }) => {
     return (
         <DescriptionContainer>
-            <DescriptionTitle>Description</DescriptionTitle>
+            <Titles children={"Description"} />
             <DescriptionText>{descriptionText}</DescriptionText>
         </DescriptionContainer>
     );

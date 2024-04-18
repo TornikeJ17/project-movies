@@ -19,14 +19,7 @@ export const CastsBlock = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 20px;
 `;
-export const CastsTitle = styled.div`
-    color: #999;
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 24px */
-`;
+
 export const ButtonBlock = styled.div`
     display: grid;
     grid-template-columns: auto auto;

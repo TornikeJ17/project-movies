@@ -7,10 +7,10 @@ import {
     ReviewButton,
     ReviewIndicator,
     ReviewRatingBlock,
-    ReviewTitle,
 } from "./ReviewsStyle";
 import Ratings from "../Ratings/Ratings";
 import { icons } from "../../../API/svgFiles";
+import Titles from "../Titles/Titles";
 const Reviews = ({ reviewData }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -40,7 +40,7 @@ const Reviews = ({ reviewData }) => {
     };
     return (
         <ReviewsContainer>
-            <ReviewTitle>Reviews</ReviewTitle>
+            <Titles children={"Reviews"} />
             <ReviewsContainerBlock>
                 {reviewData
                     ?.slice(startIndex, startIndex + itemsPerPage)

@@ -9,14 +9,7 @@ export const DescriptionContainer = styled.div`
     padding: 50px;
     gap: 20px;
 `;
-export const DescriptionTitle = styled.div`
-    color: var(--Grey-60, #999);
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 24px */
-`;
+
 export const DescriptionText = styled.div`
     max-width: 941px;
     color: var(--Absolute-White, #fff);

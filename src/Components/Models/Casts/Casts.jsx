@@ -4,12 +4,12 @@ import {
     CastsContainer,
     CastsSubContainer,
     CastsBlock,
-    CastsTitle,
     ButtonBlock,
     CastImage,
     CastButton,
 } from "./CastsStyle";
 import { icons } from "../../../API/svgFiles";
+import Titles from "../Titles/Titles";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const Casts = ({ castData }) => {
@@ -33,7 +33,7 @@ const Casts = ({ castData }) => {
     return (
         <CastsContainer>
             <CastsSubContainer>
-                <CastsTitle>Cast</CastsTitle>
+                <Titles children={"Cast"} />
                 <ButtonBlock>
                     <CastButton onClick={() => handleLeftClick()}>
                         {icons[3].svg}
