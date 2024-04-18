@@ -30,6 +30,7 @@ const Casts = ({ castData }) => {
             setActiveIndex(activeIndex + 1);
         }
     };
+    console.log(castData, "castData");
     return (
         <CastsContainer>
             <CastsSubContainer>
@@ -44,10 +45,13 @@ const Casts = ({ castData }) => {
                 </ButtonBlock>
             </CastsSubContainer>
             <CastsBlock>
-                {castData.cast
+                {castData
                     ?.slice(startIndex, startIndex + itemsPerPage)
                     .map((castItem) => (
-                        <CastImage src={baseURL + castItem.profile_path} />
+                        <div>
+                            <CastImage src={baseURL + castItem.profile_path} />
+                            <div>{castItem.name}</div>
+                        </div>
                     ))}
             </CastsBlock>
         </CastsContainer>

@@ -63,7 +63,7 @@ const MoviesPage = () => {
             <MovieBlock>
                 <MovieBlockCard>
                     <Description descriptionText={movieDetails.overview} />
-                    <Casts castData={movieCasts} />
+                    <Casts castData={movieCasts.cast} />
                     <Reviews reviewData={movieReviews} />
                 </MovieBlockCard>
                 <MovieBlockCard>
