@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useShowRequest from "../../../API/useShowRequest";
 import {
-    MoviesPageContainer,
+    ShowsPageContainer,
     Poster,
     PosterImage,
-    MovieBlock,
-    MovieBlockCard,
-    ReviewCard,
+    ShowsBlock,
+    ShowsBlockCard,
     Cards,
 } from "./ShowsPageStyle";
 import Trial from "../../Models/Trial/Trial";
@@ -22,20 +21,20 @@ const ShowsPage = () => {
     const [showsReviews, setShowsReviews] = useState([]);
     const [showsCasts, setShowsCasts] = useState([]);
     const { fetchShowsDetails, fetchShowsReviews, fetchShowsCasts } =
-        useShowRequest(); // Access the function from the hook
+        useShowRequest();
 
     useEffect(() => {
         fetchShowsDetails(id).then((data) => {
             console.log(data);
-            setShowsDetails(data); // Set the movie details in state
+            setShowsDetails(data);
         });
         fetchShowsReviews(id).then((data) => {
             console.log(data);
-            setShowsReviews(data); // Set the movie details in state
+            setShowsReviews(data);
         });
         fetchShowsCasts(id).then((data) => {
             console.log(data);
-            setShowsCasts(data); // Set the movie details in state
+            setShowsCasts(data);
         });
     }, [id]);
 
@@ -51,16 +50,16 @@ const ShowsPage = () => {
     };
 
     return (
-        <MoviesPageContainer>
+        <ShowsPageContainer>
             {renderPosterWithTitle()}
 
-            <MovieBlock>
-                <MovieBlockCard>
+            <ShowsBlock>
+                <ShowsBlockCard>
                     <Description descriptionText={showsDetails.overview} />
                     <Casts castData={showsCasts} />
                     <Reviews reviewData={showsReviews} />
-                </MovieBlockCard>
-                <MovieBlockCard>
+                </ShowsBlockCard>
+                <ShowsBlockCard>
                     <Cards>
                         <img
                             style={{ width: 100, height: 100 }}
@@ -68,10 +67,10 @@ const ShowsPage = () => {
                             alt=""
                         />
                     </Cards>
-                </MovieBlockCard>
-            </MovieBlock>
+                </ShowsBlockCard>
+            </ShowsBlock>
             <Trial />
-        </MoviesPageContainer>
+        </ShowsPageContainer>
     );
 };
 

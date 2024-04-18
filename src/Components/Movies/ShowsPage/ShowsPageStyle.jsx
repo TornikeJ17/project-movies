@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MoviesPageContainer = styled.div`
+export const ShowsPageContainer = styled.div`
     display: grid;
     align-items: center;
     justify-content: center;
@@ -17,39 +17,17 @@ export const PosterImage = styled.img`
         url(<path-to-image>) lightgray 50% / cover no-repeat;
     width: 100%;
 `;
-export const MovieBlock = styled.div`
+export const ShowsBlock = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
 `;
-export const MovieBlockCard = styled.div`
+export const ShowsBlockCard = styled.div`
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     gap: 30px;
 `;
-export const ReviewCard = styled.div`
-    display: flex;
-    padding: 40px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    flex: 1 0 0;
-    border-radius: 12px;
-    border: 1px solid var(--Black-15, #262626);
-    background: var(--Black-06, #0f0f0f);
-    max-width: 468.5px;
-    height: 265px;
-    overflow: auto;
-    overflow: hidden;
-    span {
-        color: var(--Grey-60, #999);
-        font-family: Manrope;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 27px */
-    }
-`;
+
 export const Cards = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
@@ -60,6 +38,3 @@ export const Cards = styled.div`
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-10, #1a1a1a);
 `;
-
-export const MovieBlock4 = styled.div``;
-export const MovieBlock5 = styled.div``;
