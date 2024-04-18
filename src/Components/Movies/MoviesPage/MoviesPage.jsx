@@ -11,6 +11,7 @@ import {
     CardsBlock,
     LanguagesContainer,
     LanguagesBlock,
+    DirectorBlock,
     Image,
 } from "./MoviesPageStyle";
 import Titles from "../../Models/Titles/Titles";
@@ -103,7 +104,7 @@ const MoviesPage = () => {
                             <LanguagesContainer>
                                 {console.log("movie casts", movieCasts.crew)}
                                 {movieCasts.crew?.slice(0, 1)?.map((item) => (
-                                    <LanguagesBlock>
+                                    <DirectorBlock>
                                         {item.profile_path && (
                                             <Image
                                                 src={
@@ -113,7 +114,7 @@ const MoviesPage = () => {
                                             />
                                         )}
                                         {item.name}
-                                    </LanguagesBlock>
+                                    </DirectorBlock>
                                 ))}
                             </LanguagesContainer>
                         </CardsBlock>

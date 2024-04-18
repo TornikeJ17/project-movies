@@ -11,6 +11,7 @@ import {
     CardsBlock,
     LanguagesContainer,
     LanguagesBlock,
+    DirectorBlock,
     Image,
 } from "./ShowsPageStyle";
 import Trial from "../../Models/Trial/Trial";
@@ -62,7 +63,7 @@ const ShowsPage = () => {
             <ShowsBlock>
                 <ShowsBlockCard>
                     <Description descriptionText={showsDetails.overview} />
-                    <Casts castData={showsCasts} />
+                    <Casts castData={showsCasts.cast} />
                     <Reviews reviewData={showsReviews} />
                 </ShowsBlockCard>
                 <ShowsBlockCard>
@@ -99,14 +100,14 @@ const ShowsPage = () => {
                         <CardsBlock>
                             <Titles children={"Director"} />
                             <LanguagesContainer>
-                                {showsDetails.created_by.map((item) => (
-                                    <LanguagesBlock>
+                                {showsCasts.crew?.slice(0, 1).map((item) => (
+                                    <DirectorBlock>
                                         <Image
                                             src={baseURL + item.profile_path}
                                             alt=""
                                         />
                                         {item.name}
-                                    </LanguagesBlock>
+                                    </DirectorBlock>
                                 ))}
                             </LanguagesContainer>
                         </CardsBlock>
