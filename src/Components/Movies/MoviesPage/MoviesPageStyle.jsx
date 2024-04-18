@@ -61,5 +61,33 @@ export const Cards = styled.div`
     background: var(--Black-10, #1a1a1a);
 `;
 
-export const MovieBlock4 = styled.div``;
-export const MovieBlock5 = styled.div``;
+export const CardsBlock = styled.div`
+    display: grid;
+    gap: 20px;
+`;
+export const LanguagesContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+`;
+export const LanguagesBlock = styled.div`
+    display: grid;
+    grid-template-columns: 0fr auto;
+    gap: 10px;
+    padding: 6px 12px;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--Black-15, #262626);
+    background: var(--Black-08, #141414);
+    color: var(--Absolute-White, #fff);
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+`;
+export const Image = styled.img`
+    width: 47px;
+    height: 50px;
+    border-radius: 6px;
+`;

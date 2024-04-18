@@ -146,7 +146,7 @@ const useMovieRequest = () => {
                 },
             });
             console.log("casts", response);
-            return response.data.cast;
+            return response.data;
         } catch (error) {
             console.log("Error fetching movie casts:", error);
             throw error;

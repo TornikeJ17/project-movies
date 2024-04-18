@@ -44,7 +44,7 @@ const Casts = ({ castData }) => {
                 </ButtonBlock>
             </CastsSubContainer>
             <CastsBlock>
-                {castData
+                {castData.cast
                     ?.slice(startIndex, startIndex + itemsPerPage)
                     .map((castItem) => (
                         <CastImage src={baseURL + castItem.profile_path} />

@@ -7,13 +7,18 @@ import {
     PosterImage,
     MovieBlock,
     MovieBlockCard,
-    ReviewCard,
     Cards,
+    CardsBlock,
+    LanguagesContainer,
+    LanguagesBlock,
+    Image,
 } from "./MoviesPageStyle";
+import Titles from "../../Models/Titles/Titles";
 import Trial from "../../Models/Trial/Trial";
 import Reviews from "../../Models/Reviews/Reviews";
 import Casts from "../../Models/Casts/Casts";
 import Description from "../../Models/Description/Description";
+import { icons } from "../../../API/svgFiles";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const MoviesPage = () => {
@@ -71,11 +76,53 @@ const MoviesPage = () => {
                 </MovieBlockCard>
                 <MovieBlockCard>
                     <Cards>
-                        <img
-                            style={{ width: 100, height: 100 }}
-                            src={baseURL + movieDetails.backdrop_path}
-                            alt=""
-                        />
+                        <CardsBlock>
+                            <Titles
+                                children={"Released Year"}
+                                icons={icons[7].svg}
+                            />
+                            {movieDetails.release_date.slice(0, 4)}
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles
+                                children={"Available Languages"}
+                                icons={icons[8].svg}
+                            />
+                            <LanguagesContainer>
+                                {movieDetails.spoken_languages?.map((item) => (
+                                    <LanguagesBlock>{item.name}</LanguagesBlock>
+                                ))}
+                            </LanguagesContainer>
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Ratings"} icons={icons[4].svg} />
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Genres"} icons={icons[9].svg} />
+                            <LanguagesContainer>
+                                {movieDetails.genres?.map((item) => (
+                                    <LanguagesBlock>{item.name}</LanguagesBlock>
+                                ))}
+                            </LanguagesContainer>
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Director"} />
+                            <LanguagesContainer>
+                                {console.log("movie casts", movieCasts.crew)}
+                                {movieCasts.crew?.slice(0, 1)?.map((item) => (
+                                    <LanguagesBlock>
+                                        <Image
+                                            src={baseURL + item.profile_path}
+                                            alt=""
+                                        />
+                                        {item.name}
+                                    </LanguagesBlock>
+                                ))}
+                            </LanguagesContainer>
+                        </CardsBlock>
+                        <CardsBlock>
+                            <Titles children={"Music"} />
+                        </CardsBlock>
                     </Cards>
                 </MovieBlockCard>
             </MovieBlock>

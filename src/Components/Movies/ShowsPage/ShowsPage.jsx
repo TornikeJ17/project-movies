@@ -11,6 +11,7 @@ import {
     CardsBlock,
     LanguagesContainer,
     LanguagesBlock,
+    Image,
 } from "./ShowsPageStyle";
 import Trial from "../../Models/Trial/Trial";
 import Reviews from "../../Models/Reviews/Reviews";
@@ -100,11 +101,7 @@ const ShowsPage = () => {
                             <LanguagesContainer>
                                 {showsDetails.created_by.map((item) => (
                                     <LanguagesBlock>
-                                        <img
-                                            style={{
-                                                width: 100,
-                                                height: 100,
-                                            }}
+                                        <Image
                                             src={baseURL + item.profile_path}
                                             alt=""
                                         />

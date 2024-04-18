@@ -49,9 +49,9 @@ export const LanguagesContainer = styled.div`
 `;
 export const LanguagesBlock = styled.div`
     display: grid;
+    grid-template-columns: auto auto;
     padding: 6px 12px;
     align-items: center;
-    gap: 10px;
     border-radius: 6px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-08, #141414);
@@ -61,4 +61,9 @@ export const LanguagesBlock = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 21px */
+`;
+export const Image = styled.img`
+    width: 47px;
+    height: 50px;
+    border-radius: 6px;
 `;
