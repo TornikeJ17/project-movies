@@ -71,6 +71,7 @@ const ContentWithSlider = ({
                     .map((item, index) => (
                         <CategoriesSlideCard
                             images={secondArray.length}
+                            isActive={isActive}
                             key={index}
                             onClick={() => listMovies(item)}
                         >

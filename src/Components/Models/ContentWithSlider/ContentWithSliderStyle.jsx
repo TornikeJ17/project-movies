@@ -19,9 +19,11 @@ export const CategoriesSlideBlock = styled.div`
 `;
 export const CategoriesSlideCard = styled.div`
     display: grid;
-    grid-template-columns: ${({ images }) =>
+    grid-template-columns: ${({ images, isActive }) =>
         images > 0
             ? "repeat(auto-fit, minmax(230px, 1fr))"
+            : isActive === "home"
+            ? "repeat(auto-fit, minmax(150px, 1fr))"
             : "repeat(auto-fit, minmax(115px, 1fr))"};
     gap: 4px;
     padding: 27px;
