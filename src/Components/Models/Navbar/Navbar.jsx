@@ -14,14 +14,16 @@ import { NavLink } from "react-router-dom";
 
 import { images, menuItems, navbar } from "../../../API/svgFiles";
 import UseSearchRequest from "../../../API/useSearchRequest";
+import MovieShowSearch from "../../Movies/MovieShowSearch/MovieShowSearch";
 const Navbar = ({ isActive, setIsActive }) => {
     const handleClick = (id) => {
-        setIsActive(id);
-        console.log(id, "active Index");
+        if (id) {
+            setIsActive(id);
+        }
     };
     return (
         <>
-            <SubContainer>
+            <SubContainer isActive={isActive}>
                 {/* {images.map(
                     (item, index) =>
                         isActive === "home" && (
@@ -89,8 +91,9 @@ const Navbar = ({ isActive, setIsActive }) => {
                             fill="white"
                         />
                     </svg> */}
-                    {/* <div>{navbar[1].svg}</div> */}
-                    <UseSearchRequest />
+                    <div>{navbar[1].svg}</div>
+                    {/* <UseSearchRequest /> */}
+                    {/* <MovieShowSearch /> */}
                     <div>{navbar[2].svg}</div>
 
                     {/* <HamburgerMenu>{navbar[3].svg}</HamburgerMenu> */}

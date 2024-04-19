@@ -9,44 +9,39 @@ const UseSearchRequest = () => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState({ movies: [], tvShows: [] });
     const navigate = useNavigate();
-
+    const search = async () => {
+        if (query.trim()) {
+            // Search for movies
+            const responseMovies = await axios.get(`${API_URL}search/movie`, {
+                params: {
+                    query: query,
+                },
+                headers: {
+                    Accept: "application/json",
+                    Authorization,
+                },
+            });
+            // Search for TV shows
+            const responseTVShows = await axios.get(`${API_URL}search/tv`, {
+                params: {
+                    query: query,
+                },
+                headers: {
+                    Accept: "application/json",
+                    Authorization,
+                },
+            });
+            // Update state with results
+            setResults({
+                movies: responseMovies.data.results,
+                tvShows: responseTVShows.data.results,
+            });
+        } else {
+            // Clear results if the query is empty
+            setResults({ movies: [], tvShows: [] });
+        }
+    };
     useEffect(() => {
-        const search = async () => {
-            if (query.trim()) {
-                // Search for movies
-                const responseMovies = await axios.get(
-                    `${API_URL}search/movie`,
-                    {
-                        params: {
-                            query: query,
-                        },
-                        headers: {
-                            Accept: "application/json",
-                            Authorization,
-                        },
-                    }
-                );
-                // Search for TV shows
-                const responseTVShows = await axios.get(`${API_URL}search/tv`, {
-                    params: {
-                        query: query,
-                    },
-                    headers: {
-                        Accept: "application/json",
-                        Authorization,
-                    },
-                });
-                // Update state with results
-                setResults({
-                    movies: responseMovies.data.results,
-                    tvShows: responseTVShows.data.results,
-                });
-            } else {
-                // Clear results if the query is empty
-                setResults({ movies: [], tvShows: [] });
-            }
-        };
-
         // Debounce the search for better performance
         const timeoutId = setTimeout(() => {
             search();
@@ -62,36 +57,12 @@ const UseSearchRequest = () => {
             : `/movie-shows/show/${id.id}`;
         navigate(path);
     };
-    return (
-        <div>
-            <input
-                type="text"
-                placeholder="Search for movies or TV shows..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-            />
-            <div>
-                <h2>Movies</h2>
-                <ul>
-                    {results.movies.map((movie) => (
-                        <li onClick={() => listMovies(movie)} key={movie.id}>
-                            {movie.title}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div>
-                <h2>TV Shows</h2>
-                <ul>
-                    {results.tvShows.map((tvShow) => (
-                        <li onClick={() => listMovies(tvShow)} key={tvShow.id}>
-                            {tvShow.name}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
-    );
+    return {
+        search,
+        setQuery,
+        query,
+        results,
+    };
 };
 
 export default UseSearchRequest;

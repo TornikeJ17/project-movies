@@ -13,6 +13,16 @@ export const NavContainer = styled.div`
 export const SubContainer = styled.div`
     display: grid;
     gap: 10px;
+    height: ${({ isActive }) => isActive === "home" && "1092px"};
+    max-height: 1092px;
+    background-image: ${({ isActive }) =>
+        isActive === "home" &&
+        `linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.5),
+            rgb(0, 0, 0)
+        ),
+        url(assets/img/bg.jpg)`};
 `;
 
 export const ImageContainer = styled.div`

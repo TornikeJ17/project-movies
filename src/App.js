@@ -43,8 +43,11 @@ const App = () => {
         getTopShowsRated,
         getShowsAiring,
     } = useShowRequest();
-
+    const location = useLocation();
     const [isActive, setIsActive] = useState("");
+    useEffect(() => {
+        setIsActive(location.pathname === "/" ? "home" : "");
+    }, [location]);
     useEffect(() => {
         movieGenres();
         trendingMovies();
@@ -62,7 +65,7 @@ const App = () => {
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
-            {/* <Navbar isActive={isActive} setIsActive={setIsActive} /> */}
+            <Navbar isActive={isActive} setIsActive={setIsActive} />
             <Main>
                 <Routes>
                     <Route
