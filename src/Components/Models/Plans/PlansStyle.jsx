@@ -5,6 +5,9 @@ export const PlanBlocks = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(377px, 1fr));
     gap: 30px;
     align-self: stretch;
+    @media only screen and (max-width: 764px) {
+        padding: 50px;
+    }
 `;
 export const PlansTab = styled.div`
     display: flex;

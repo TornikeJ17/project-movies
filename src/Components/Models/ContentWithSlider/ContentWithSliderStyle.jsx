@@ -13,6 +13,9 @@ export const CategoriesSlideBlock = styled.div`
     padding-left: ${({ isActive }) => (isActive === "home" ? "" : "50px")};
     padding-right: ${({ isActive }) => (isActive === "home" ? "" : "50px")};
     padding-bottom: ${({ isActive }) => (isActive === "home" ? "" : "50px")};
+    @media only screen and (max-width: 764px) {
+        padding: 50px;
+    }
 `;
 export const CategoriesSlideCard = styled.div`
     display: grid;
@@ -27,6 +30,12 @@ export const CategoriesSlideCard = styled.div`
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-10, #1a1a1a);
     cursor: pointer;
+    @media only screen and (max-width: 764px) {
+        grid-template-columns: ${({ images }) =>
+            images > 0
+                ? "repeat(auto-fit, minmax(230px, 1fr))"
+                : "repeat(auto-fit, minmax(150px, 1fr))"};
+    }
 `;
 export const ImageBlock = styled.div`
     background: linear-gradient(

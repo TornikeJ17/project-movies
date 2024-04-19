@@ -35,6 +35,9 @@ export const DevicesBlock = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(512px, 1fr));
     gap: 30px;
     align-self: stretch;
+    @media only screen and (max-width: 764px) {
+        padding: 50px;
+    }
 `;
 export const DevicesCard = styled.div`
     display: grid;

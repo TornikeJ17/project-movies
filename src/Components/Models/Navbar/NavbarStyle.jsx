@@ -33,6 +33,9 @@ export const SubContainerBlock = styled.div`
     justify-content: center;
     align-items: center;
     gap: 50px;
+    @media only screen and (max-width: 764px) {
+        max-width: 550px;
+    }
 `;
 export const SubContainerTitle = styled.div`
     color: var(--Absolute-White, #fff);
