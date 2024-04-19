@@ -111,9 +111,6 @@ const ShowsPage = () => {
                                 ))}
                             </LanguagesContainer>
                         </CardsBlock>
-                        <CardsBlock>
-                            <Titles children={"Music"} />
-                        </CardsBlock>
                     </Cards>
                 </ShowsBlockCard>
             </ShowsBlock>

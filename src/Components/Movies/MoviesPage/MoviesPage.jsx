@@ -118,9 +118,6 @@ const MoviesPage = () => {
                                 ))}
                             </LanguagesContainer>
                         </CardsBlock>
-                        <CardsBlock>
-                            <Titles children={"Music"} />
-                        </CardsBlock>
                     </Cards>
                 </MovieBlockCard>
             </MovieBlock>
