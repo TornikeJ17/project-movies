@@ -12,7 +12,6 @@ export const NavContainer = styled.div`
 `;
 export const SubContainer = styled.div`
     display: grid;
-    gap: 10px;
     height: ${({ isActive }) => isActive === "home" && "1092px"};
     max-height: 1092px;
     background-image: ${({ isActive }) =>
@@ -23,8 +22,45 @@ export const SubContainer = styled.div`
             rgb(0, 0, 0)
         ),
         url(assets/img/bg.jpg)`};
+    position: relative;
 `;
-
+export const SubContainerBlock = styled.div`
+    position: absolute;
+    width: 1092px;
+    bottom: -7%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+`;
+export const SubContainerTitle = styled.div`
+    color: var(--Absolute-White, #fff);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 87px */
+`;
+export const SubContainerText = styled.div`
+    color: var(--Grey-60, #999);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+`;
+export const SubContainerButton = styled.div`
+    display: flex;
+    padding: 18px 24px;
+    align-items: center;
+    gap: 4px;
+    border-radius: 8px;
+    background: var(--Red-45, #e50000);
+    cursor: pointer;
+`;
 export const ImageContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(195.56px, 1fr));

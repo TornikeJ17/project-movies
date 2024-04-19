@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import {
     SubContainer,
+    SubContainerBlock,
+    SubContainerTitle,
+    SubContainerText,
+    SubContainerButton,
     NavContainer,
     ImageContainer,
     ImageBlock,
@@ -11,8 +15,8 @@ import {
     HamburgerMenu,
 } from "./NavbarStyle";
 import { NavLink } from "react-router-dom";
-
-import { images, menuItems, navbar } from "../../../API/svgFiles";
+import logo from "./transparent-logo.svg";
+import { icons, images, menuItems, navbar } from "../../../API/svgFiles";
 import UseSearchRequest from "../../../API/useSearchRequest";
 import MovieShowSearch from "../../Movies/MovieShowSearch/MovieShowSearch";
 const Navbar = ({ isActive, setIsActive }) => {
@@ -37,6 +41,49 @@ const Navbar = ({ isActive, setIsActive }) => {
                             </ImageContainer>
                         )
                 )} */}
+                {isActive === "home" && (
+                    <>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                position: "relative",
+                                top: "10%",
+                            }}
+                        >
+                            <img width={500} src={logo} alt="" />
+                        </div>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <SubContainerBlock>
+                                <SubContainerTitle>
+                                    The Best Streaming Experience
+                                    <SubContainerText>
+                                        StreamVibe is the best streaming
+                                        experience for watching your favorite
+                                        movies and shows on demand, anytime,
+                                        anywhere. With StreamVibe, you can enjoy
+                                        a wide variety of content, including the
+                                        latest blockbusters, classic movies,
+                                        popular TV shows, and more. You can also
+                                        create your own watchlists, so you can
+                                        easily find the content you want to
+                                        watch.
+                                    </SubContainerText>
+                                </SubContainerTitle>
+
+                                <SubContainerButton>
+                                    {icons[10].svg}Start Watching Now
+                                </SubContainerButton>
+                            </SubContainerBlock>
+                        </div>
+                    </>
+                )}
             </SubContainer>
             <NavContainer>
                 <NavbarLogo>{navbar[0].svg}</NavbarLogo>
