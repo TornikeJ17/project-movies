@@ -62,7 +62,7 @@ const App = () => {
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
-            <Navbar isActive={isActive} setIsActive={setIsActive} />
+            {/* <Navbar isActive={isActive} setIsActive={setIsActive} /> */}
             <Main>
                 <Routes>
                     <Route

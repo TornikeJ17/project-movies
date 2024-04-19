@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const API_URL = "https://api.themoviedb.org/3/";
 const Authorization =
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmJkZTJiMDYzN2RkMWMxOTM1ZTdmOGI2YzhmZjVlYyIsInN1YiI6IjY1ZmQ4ZTRjNzcwNzAwMDE2MzA4OWY3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Iy-N0kgmU2wyzEHwQR4r9sm-DyDHMlrbPsllQFEInqs";
@@ -7,6 +8,7 @@ const Authorization =
 const UseSearchRequest = () => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState({ movies: [], tvShows: [] });
+    const navigate = useNavigate();
 
     useEffect(() => {
         const search = async () => {
@@ -53,7 +55,13 @@ const UseSearchRequest = () => {
         // Cleanup function to cancel the timeout if the component unmounts
         return () => clearTimeout(timeoutId);
     }, [query]);
-
+    const listMovies = (id) => {
+        console.log(id, "search");
+        const path = results.movies
+            ? `/movie-shows/movie/${id.id}`
+            : `/movie-shows/show/${id.id}`;
+        navigate(path);
+    };
     return (
         <div>
             <input
@@ -66,7 +74,9 @@ const UseSearchRequest = () => {
                 <h2>Movies</h2>
                 <ul>
                     {results.movies.map((movie) => (
-                        <li key={movie.id}>{movie.title}</li>
+                        <li onClick={() => listMovies(movie)} key={movie.id}>
+                            {movie.title}
+                        </li>
                     ))}
                 </ul>
             </div>
@@ -74,7 +84,9 @@ const UseSearchRequest = () => {
                 <h2>TV Shows</h2>
                 <ul>
                     {results.tvShows.map((tvShow) => (
-                        <li key={tvShow.id}>{tvShow.name}</li>
+                        <li onClick={() => listMovies(tvShow)} key={tvShow.id}>
+                            {tvShow.name}
+                        </li>
                     ))}
                 </ul>
             </div>
