@@ -64,51 +64,8 @@ export const SubContainerBlock = styled.div`
     gap: 40px;
     position: relative;
     overflow: hidden;
-    div {
-        display: flex;
-        align-items: flex-start;
-        flex: 1 0 0;
-        align-self: stretch;
-    }
 `;
 export const ImageBlock = styled.div`
-    position: absolute;
-    top: ${({ index }) =>
-        (index === 0 && "-140px") ||
-        (index === 1 && "-140px") ||
-        (index === 2 && "-140px") ||
-        (index === 3 && "-140px") ||
-        (index === 4 && "40px") ||
-        (index === 5 && "40px") ||
-        (index === 6 && "40px") ||
-        (index === 7 && "40px") ||
-        (index === 8 && "220px") ||
-        (index === 9 && "220px") ||
-        (index === 10 && "220px") ||
-        (index === 11 && "220px") ||
-        (index === 12 && "420px") ||
-        (index === 13 && "420px") ||
-        (index === 14 && "420px") ||
-        (index === 15 && "420px")};
-    left: ${({ index }) =>
-        (index === 0 && "-45px") ||
-        (index === 1 && "105px") ||
-        (index === 2 && "255px") ||
-        (index === 3 && "405px") ||
-        (index === 4 && "-45px") ||
-        (index === 5 && "105px") ||
-        (index === 6 && "255px") ||
-        (index === 7 && "405px") ||
-        (index === 8 && "405px") ||
-        (index === 9 && "255px") ||
-        (index === 10 && "105px") ||
-        (index === 11 && "-45px") ||
-        (index === 12 && "405px") ||
-        (index === 13 && "255px") ||
-        (index === 14 && "105px") ||
-        (index === 15 && "-45px")};
-    width: 135.25px;
-    height: 168.25px;
     flex: 1 0 0;
     align-self: stretch;
     border-radius: 12px;
