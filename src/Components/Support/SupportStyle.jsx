@@ -56,7 +56,6 @@ export const SubContainer = styled.div`
     height: 477px;
 `;
 export const SubContainerBlock = styled.div`
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     flex: 1 0 0;
@@ -66,6 +65,8 @@ export const SubContainerBlock = styled.div`
     overflow: hidden;
 `;
 export const ImageBlock = styled.div`
+    height: 100px;
+    width: 100px;
     flex: 1 0 0;
     align-self: stretch;
     border-radius: 12px;
