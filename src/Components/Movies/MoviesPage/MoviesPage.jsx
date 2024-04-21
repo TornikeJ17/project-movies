@@ -28,8 +28,13 @@ const MoviesPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);
     const [movieReviews, setMovieReviews] = useState([]);
     const [movieCasts, setMovieCasts] = useState([]);
-    const { fetchMovieDetails, fetchMovieReviews, fetchMovieCasts } =
-        useMovieRequest(); // Access the function from the hook
+    const [movieVideos, setMovieVideos] = useState([]);
+    const {
+        fetchMovieDetails,
+        fetchMovieReviews,
+        fetchMovieCasts,
+        fetchMovieVideos,
+    } = useMovieRequest(); // Access the function from the hook
 
     useEffect(() => {
         fetchMovieDetails(id).then((data) => {
@@ -42,8 +47,10 @@ const MoviesPage = () => {
         fetchMovieCasts(id).then((data) => {
             setMovieCasts(data);
         });
-        console.log(movieReviews, "movieReviews");
-        console.log(movieCasts, "movieCasts");
+        fetchMovieVideos(id).then((data) => {
+            console.log(data, "data moviess");
+            setMovieVideos(data);
+        });
     }, [id]);
 
     if (!movieDetails) {
@@ -53,6 +60,7 @@ const MoviesPage = () => {
         return (
             <Poster>
                 <PosterImage src={baseURL + movieDetails.backdrop_path} />
+                {console.log(movieVideos, "movieVideos")}
             </Poster>
         );
     };
@@ -60,11 +68,21 @@ const MoviesPage = () => {
     return (
         <MoviesPageContainer>
             {renderPosterWithTitle()}
-
+            <div>
+                {movieVideos.map((item) => (
+                    <a
+                        href={`https://www.youtube.com/watch?v=${item.key}`}
+                        target="_blank"
+                    >
+                        {item.name}
+                    </a>
+                ))}
+            </div>
             <MovieBlock>
                 <MovieBlockCard>
                     <Description descriptionText={movieDetails.overview} />
-                    <Casts castData={movieCasts.cast} />
+                    <Casts castData={movieCasts.cast} CastsTitle={"Cast"} />
+                    <Casts castData={movieCasts.crew} CastsTitle={"Crew"} />
                     <Reviews reviewData={movieReviews} />
                 </MovieBlockCard>
                 <MovieBlockCard>
@@ -102,7 +120,6 @@ const MoviesPage = () => {
                         <CardsBlock>
                             <Titles children={"Director"} />
                             <LanguagesContainer>
-                                {console.log("movie casts", movieCasts.crew)}
                                 {movieCasts.crew?.slice(0, 1)?.map((item) => (
                                     <DirectorBlock>
                                         {item.profile_path && (

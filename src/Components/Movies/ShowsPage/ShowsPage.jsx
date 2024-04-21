@@ -52,6 +52,7 @@ const ShowsPage = () => {
         return (
             <Poster>
                 <PosterImage src={baseURL + showsDetails.backdrop_path} />
+                {console.log(showsDetails, "showDetails")}
             </Poster>
         );
     };
@@ -63,7 +64,8 @@ const ShowsPage = () => {
             <ShowsBlock>
                 <ShowsBlockCard>
                     <Description descriptionText={showsDetails.overview} />
-                    <Casts castData={showsCasts.cast} />
+                    <Casts castData={showsCasts.cast} CastsTitle={"Cast"} />
+                    <Casts castData={showsCasts.crew} CastsTitle={"Crew"} />
                     <Reviews reviewData={showsReviews} />
                 </ShowsBlockCard>
                 <ShowsBlockCard>

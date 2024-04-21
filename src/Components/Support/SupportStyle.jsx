@@ -54,19 +54,19 @@ export const SubContainer = styled.div`
     background: var(--Black-06, #0f0f0f);
     position: relative;
     height: 477px;
-`;
-export const SubContainerBlock = styled.div`
-    flex-direction: column;
-    align-items: flex-start;
-    flex: 1 0 0;
-    align-self: stretch;
-    gap: 40px;
-    position: relative;
     overflow: hidden;
 `;
+export const SubContainerBlock = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: absolute;
+    top: -80px;
+    left: -50px;
+    gap: 10px;
+`;
 export const ImageBlock = styled.div`
-    height: 100px;
-    width: 100px;
+    width: 150px;
+    height: 150px;
     flex: 1 0 0;
     align-self: stretch;
     border-radius: 12px;

@@ -12,7 +12,7 @@ import { icons } from "../../../API/svgFiles";
 import Titles from "../Titles/Titles";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const Casts = ({ castData }) => {
+const Casts = ({ castData, CastsTitle }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
     const itemsPerPage = 8;
@@ -34,7 +34,9 @@ const Casts = ({ castData }) => {
     return (
         <CastsContainer>
             <CastsSubContainer>
-                <Titles children={"Cast"} />
+                <Titles
+                    children={CastsTitle === "Crew" ? CastsTitle : CastsTitle}
+                />
                 <ButtonBlock>
                     <CastButton onClick={() => handleLeftClick()}>
                         {icons[3].svg}

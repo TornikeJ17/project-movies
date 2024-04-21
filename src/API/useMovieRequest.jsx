@@ -152,6 +152,22 @@ const useMovieRequest = () => {
             throw error;
         }
     };
+    const fetchMovieVideos = async (id) => {
+        try {
+            const response = await axios.get(`${API_URL}movie/${id}/videos`, {
+                params: { language: "en-US" },
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            console.log("movie videos", response);
+            return response.data.results;
+        } catch (error) {
+            console.log("Error fetching movie casts:", error);
+            throw error;
+        }
+    };
 
     return {
         movieGenres,
@@ -169,6 +185,7 @@ const useMovieRequest = () => {
         fetchMovieDetails,
         fetchMovieReviews,
         fetchMovieCasts,
+        fetchMovieVideos,
     };
 };
 
