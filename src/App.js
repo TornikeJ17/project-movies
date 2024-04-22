@@ -64,6 +64,7 @@ const App = () => {
     }, []);
     const isMovieContext = false;
     const isGenre = false;
+    const isMobile = false;
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
@@ -80,6 +81,7 @@ const App = () => {
                                 isActive={isActive}
                                 isMovieContext={isMovieContext}
                                 isGenre={isGenre}
+                                isMobile={isMobile}
                             />
                         }
                     />

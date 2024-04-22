@@ -23,6 +23,7 @@ const Home = ({
     isActive,
     isMovieContext,
     isGenre,
+    isMobile,
 }) => {
     const RenderCategoriesSlide = () => {
         const [startIndex, setStartIndex] = useState(0);
@@ -71,6 +72,7 @@ const Home = ({
                 onClickFunction={movieListGenres}
                 isMovieContext={isMovieContext}
                 isGenre={!isGenre}
+                isMobile={isMobile}
             />
         );
     };

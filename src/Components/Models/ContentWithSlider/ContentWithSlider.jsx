@@ -24,6 +24,7 @@ const ContentWithSlider = ({
     onClickFunction,
     isMovieContext,
     isGenre,
+    isMobile,
 }) => {
     const navigate = useNavigate();
     const [startIndex, setStartIndex] = useState(0);
@@ -43,6 +44,11 @@ const ContentWithSlider = ({
             setStartIndex(startIndex + itemsPerPage);
             setActiveIndex(activeIndex + 1);
         }
+    };
+    const handleSliderChange = (event) => {
+        const newActiveIndex = parseInt(event.target.value, 10) - 1;
+        setActiveIndex(newActiveIndex);
+        setStartIndex(newActiveIndex * itemsPerPage); // Calculate new start index
     };
     const listMovies = (id, name) => {
         console.log(name, "mitxari name");
@@ -71,8 +77,10 @@ const ContentWithSlider = ({
                 <SliderHeader
                     handleLeftClick={handleLeftClick}
                     handleRightClick={handleRightClick}
+                    handleSliderChange={handleSliderChange}
                     activeIndex={activeIndex}
                     totalPages={totalPages}
+                    isMobile={isMobile}
                 />
             </Header>
             <CategoriesSlideBlock isActive={isActive}>
