@@ -23,8 +23,10 @@ const Movies = ({
     getTopShowsRated,
     getShowsAiring,
     fetchShowsDetails,
+    //currentGet
+    isMovieContext,
+    isGenre,
 }) => {
-    const isMovieContext = false;
     return (
         <Container>
             {/* Movies */}
@@ -38,7 +40,9 @@ const Movies = ({
                     secondArray={moviesByGenre}
                     onClickFunction={movieListGenres}
                     isMovieContext={isMovieContext}
+                    isGenre={!isGenre}
                 />
+                {console.log(moviesByGenre, "moviesByGenre")}
                 <ContentWithSlider
                     HeaderTitle={`Trending Now`}
                     HeaderText={`Whether you're looking for a comedy to make you
@@ -49,6 +53,7 @@ const Movies = ({
                     onClickFunction={movieListGenres}
                     fetchMovieDetails={fetchMovieDetails}
                     isMovieContext={isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Popular`}
@@ -60,6 +65,7 @@ const Movies = ({
                     onClickFunction={movieListGenres}
                     fetchMovieDetails={fetchMovieDetails}
                     isMovieContext={isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Top Rated`}
@@ -71,6 +77,7 @@ const Movies = ({
                     onClickFunction={movieListGenres}
                     fetchMovieDetails={fetchMovieDetails}
                     isMovieContext={isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Upcoming `}
@@ -82,6 +89,7 @@ const Movies = ({
                     onClickFunction={movieListGenres}
                     fetchMovieDetails={fetchMovieDetails}
                     isMovieContext={isMovieContext}
+                    isGenre={isGenre}
                 />
             </BlockContainer>
             {/* Shows */}
@@ -95,6 +103,7 @@ const Movies = ({
                     secondArray={showsByGenre}
                     onClickFunction={showsListGenres}
                     isMovieContext={!isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Airing Today`}
@@ -106,6 +115,7 @@ const Movies = ({
                     onClickFunction={showsListGenres}
                     fetchShowsDetails={fetchShowsDetails}
                     isMovieContext={!isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Trending Now`}
@@ -117,6 +127,7 @@ const Movies = ({
                     onClickFunction={showsListGenres}
                     fetchShowsDetails={fetchShowsDetails}
                     isMovieContext={!isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Popular`}
@@ -128,6 +139,7 @@ const Movies = ({
                     onClickFunction={showsListGenres}
                     fetchShowsDetails={fetchShowsDetails}
                     isMovieContext={!isMovieContext}
+                    isGenre={isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Top Rated`}
@@ -139,6 +151,7 @@ const Movies = ({
                     onClickFunction={showsListGenres}
                     fetchShowsDetails={fetchShowsDetails}
                     isMovieContext={!isMovieContext}
+                    isGenre={isGenre}
                 />
             </BlockContainer>
             <Trial />

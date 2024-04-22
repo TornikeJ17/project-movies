@@ -13,6 +13,7 @@ import axios from "axios";
 import useShowRequest from "./API/useShowRequest";
 import MoviesPage from "./Components/Movies/MoviesPage/MoviesPage";
 import ShowsPage from "./Components/Movies/ShowsPage/ShowsPage";
+import MoviesByGenre from "./Components/Movies/MoviesByGenre/MoviesByGenre";
 
 const App = () => {
     const {
@@ -61,7 +62,8 @@ const App = () => {
         topRatedShows();
         airingToday();
     }, []);
-
+    const isMovieContext = false;
+    const isGenre = false;
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
@@ -76,6 +78,8 @@ const App = () => {
                                 moviesByGenre={moviesByGenre}
                                 genres={getGenres}
                                 isActive={isActive}
+                                isMovieContext={isMovieContext}
+                                isGenre={isGenre}
                             />
                         }
                     />
@@ -99,6 +103,8 @@ const App = () => {
                                 getShowsPopular={getShowsPopular}
                                 getTopShowsRated={getTopShowsRated}
                                 getShowsAiring={getShowsAiring}
+                                isMovieContext={isMovieContext}
+                                isGenre={isGenre}
                             />
                         }
                     />
@@ -109,6 +115,10 @@ const App = () => {
                     <Route
                         path="/movie-shows/show/:id"
                         element={<ShowsPage />}
+                    />
+                    <Route
+                        path="/movie-shows/genre/movie/:id"
+                        element={<MoviesByGenre />}
                     />
                     <Route path="/support" element={<Support />} />
                     <Route path="/subscriptions" element={<Subscriptions />} />

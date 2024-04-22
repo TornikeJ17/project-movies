@@ -16,7 +16,14 @@ import Plans from "../Models/Plans/Plans";
 import Questions from "../Models/Questions/Questions";
 import ContentWithSlider from "../Models/ContentWithSlider/ContentWithSlider";
 
-const Home = ({ genres, movieListGenres, moviesByGenre, isActive }) => {
+const Home = ({
+    genres,
+    movieListGenres,
+    moviesByGenre,
+    isActive,
+    isMovieContext,
+    isGenre,
+}) => {
     const RenderCategoriesSlide = () => {
         const [startIndex, setStartIndex] = useState(0);
         const [activeIndex, setActiveIndex] = useState(0);
@@ -62,6 +69,8 @@ const Home = ({ genres, movieListGenres, moviesByGenre, isActive }) => {
                 startIndex={startIndex}
                 itemsPerPage={itemsPerPage}
                 onClickFunction={movieListGenres}
+                isMovieContext={isMovieContext}
+                isGenre={!isGenre}
             />
         );
     };

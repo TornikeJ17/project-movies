@@ -23,12 +23,14 @@ const ContentWithSlider = ({
     HeaderText,
     onClickFunction,
     isMovieContext,
+    isGenre,
 }) => {
     const navigate = useNavigate();
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
     const itemsPerPage = 4;
     const totalPages = Math.ceil(firstArray?.length / itemsPerPage);
+
     const handleLeftClick = () => {
         if (startIndex > 0) {
             setStartIndex(startIndex - itemsPerPage);
@@ -42,8 +44,16 @@ const ContentWithSlider = ({
             setActiveIndex(activeIndex + 1);
         }
     };
-    const listMovies = (id) => {
-        const path = !isMovieContext
+    const listMovies = (id, name) => {
+        console.log(name, "mitxari name");
+        // const path = !isMovieContext
+        //     ? `/movie-shows/movie/${id.id}`
+        //     : `/movie-shows/show/${id.id}`;
+        const path = isGenre
+            ? !isMovieContext
+                ? `/movie-shows/genre/movie/${id.id}`
+                : `/movie-shows/show/${id.id}`
+            : !isMovieContext
             ? `/movie-shows/movie/${id.id}`
             : `/movie-shows/show/${id.id}`;
         navigate(path);
@@ -51,7 +61,7 @@ const ContentWithSlider = ({
     useEffect(() => {
         if (firstArray) {
             firstArray.forEach((item) => {
-                onClickFunction(item.id);
+                onClickFunction(item.id, item.name);
             });
         }
     }, [firstArray]);
@@ -75,6 +85,7 @@ const ContentWithSlider = ({
                             key={index}
                             onClick={() => listMovies(item)}
                         >
+                            {console.log(firstArray, "firstARray avoe")}
                             {secondArray && secondArray[item.id] ? (
                                 secondArray[item.id]
                                     .slice(0, 4)

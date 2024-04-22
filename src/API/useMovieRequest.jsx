@@ -28,8 +28,9 @@ const useMovieRequest = () => {
             });
         return getGenre;
     };
-    const movieListGenres = async (genreId) => {
+    const movieListGenres = async (genreId, name) => {
         try {
+            console.log(name, "avoeee");
             const getMovies = await axios.get(API_URL + "discover/movie", {
                 params: {
                     with_genres: genreId,
@@ -168,6 +169,23 @@ const useMovieRequest = () => {
             throw error;
         }
     };
+    const fetchMovieById = async (id) => {
+        try {
+            const response = await axios.get(`${API_URL}discover/movie`, {
+                params: {
+                    with_genres: id,
+                },
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.log("Error fetching movie casts:", error);
+            throw error;
+        }
+    };
 
     return {
         movieGenres,
@@ -186,6 +204,7 @@ const useMovieRequest = () => {
         fetchMovieReviews,
         fetchMovieCasts,
         fetchMovieVideos,
+        fetchMovieById,
     };
 };
 
