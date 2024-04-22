@@ -82,3 +82,11 @@ export const Image = styled.img`
     height: 50px;
     border-radius: 6px;
 `;
+export const ImageSvg = styled.div`
+    svg {
+        border-radius: 6px;
+        width: 47px;
+
+        height: 50px;
+    }
+`;

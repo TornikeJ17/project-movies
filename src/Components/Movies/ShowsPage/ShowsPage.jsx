@@ -13,6 +13,7 @@ import {
     LanguagesBlock,
     DirectorBlock,
     Image,
+    ImageSvg,
 } from "./ShowsPageStyle";
 import Trial from "../../Models/Trial/Trial";
 import Reviews from "../../Models/Reviews/Reviews";
@@ -66,7 +67,10 @@ const ShowsPage = () => {
                     <Description descriptionText={showsDetails.overview} />
                     <Casts castData={showsCasts.cast} CastsTitle={"Cast"} />
                     <Casts castData={showsCasts.crew} CastsTitle={"Crew"} />
-                    <Reviews reviewData={showsReviews} />
+                    {console.log(showsReviews, "ShowReviews")}
+                    {showsReviews.length > 0 && (
+                        <Reviews reviewData={showsReviews} />
+                    )}
                 </ShowsBlockCard>
                 <ShowsBlockCard>
                     <Cards>
@@ -104,10 +108,16 @@ const ShowsPage = () => {
                             <LanguagesContainer>
                                 {showsCasts.crew?.slice(0, 1).map((item) => (
                                     <DirectorBlock>
-                                        <Image
-                                            src={baseURL + item.profile_path}
-                                            alt=""
-                                        />
+                                        {item.profile_path ? (
+                                            <Image
+                                                src={
+                                                    baseURL + item.profile_path
+                                                }
+                                                alt=""
+                                            />
+                                        ) : (
+                                            <ImageSvg>{icons[11].svg}</ImageSvg>
+                                        )}
                                         {item.name}
                                     </DirectorBlock>
                                 ))}

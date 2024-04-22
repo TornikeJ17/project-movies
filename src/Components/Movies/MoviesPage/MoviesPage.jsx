@@ -83,7 +83,9 @@ const MoviesPage = () => {
                     <Description descriptionText={movieDetails.overview} />
                     <Casts castData={movieCasts.cast} CastsTitle={"Cast"} />
                     <Casts castData={movieCasts.crew} CastsTitle={"Crew"} />
-                    <Reviews reviewData={movieReviews} />
+                    {movieReviews.length > 0 && (
+                        <Reviews reviewData={movieReviews} />
+                    )}
                 </MovieBlockCard>
                 <MovieBlockCard>
                     <Cards>
@@ -119,6 +121,7 @@ const MoviesPage = () => {
                         </CardsBlock>
                         <CardsBlock>
                             <Titles children={"Director"} />
+
                             <LanguagesContainer>
                                 {movieCasts.crew?.slice(0, 1)?.map((item) => (
                                     <DirectorBlock>

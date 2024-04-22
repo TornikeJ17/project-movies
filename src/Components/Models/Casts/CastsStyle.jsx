@@ -43,3 +43,13 @@ export const CastImage = styled.img`
     object-fit: cover;
     object-position: center;
 `;
+export const CastImageSVG = styled.div`
+    width: 100px;
+    height: 139px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+    svg {
+        border-radius: 12px;
+    }
+`;

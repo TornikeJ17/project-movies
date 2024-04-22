@@ -7,6 +7,7 @@ import {
     ButtonBlock,
     CastImage,
     CastButton,
+    CastImageSVG,
 } from "./CastsStyle";
 import { icons } from "../../../API/svgFiles";
 import Titles from "../Titles/Titles";
@@ -51,7 +52,14 @@ const Casts = ({ castData, CastsTitle }) => {
                     ?.slice(startIndex, startIndex + itemsPerPage)
                     .map((castItem) => (
                         <div>
-                            <CastImage src={baseURL + castItem.profile_path} />
+                            {console.log(castItem.profile_path, "profilePath")}
+                            {castItem.profile_path ? (
+                                <CastImage
+                                    src={baseURL + castItem.profile_path}
+                                />
+                            ) : (
+                                <CastImageSVG>{icons[11].svg}</CastImageSVG>
+                            )}
                             <div>{castItem.name}</div>
                         </div>
                     ))}
