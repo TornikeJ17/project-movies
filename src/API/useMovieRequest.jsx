@@ -28,9 +28,8 @@ const useMovieRequest = () => {
             });
         return getGenre;
     };
-    const movieListGenres = async (genreId, name) => {
+    const movieListGenres = async (genreId) => {
         try {
-            console.log(name, "avoeee");
             const getMovies = await axios.get(API_URL + "discover/movie", {
                 params: {
                     with_genres: genreId,
@@ -169,11 +168,12 @@ const useMovieRequest = () => {
             throw error;
         }
     };
-    const fetchMovieById = async (id) => {
+    const fetchMovieById = async (id, pages) => {
         try {
             const response = await axios.get(`${API_URL}discover/movie`, {
                 params: {
                     with_genres: id,
+                    page: pages,
                 },
                 headers: {
                     accept: "application/json",
