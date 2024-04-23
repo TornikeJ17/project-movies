@@ -150,6 +150,24 @@ const useShowRequest = () => {
             throw error;
         }
     };
+    const fetchShowsById = async (id, pages) => {
+        try {
+            const response = await axios.get(`${API_URL}discover/tv`, {
+                params: {
+                    with_genres: id,
+                    page: pages,
+                },
+                headers: {
+                    accept: "application/json",
+                    Authorization,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.log("Error fetching movie casts:", error);
+            throw error;
+        }
+    };
     return {
         showsGenres,
         showsListGenres,
@@ -166,6 +184,7 @@ const useShowRequest = () => {
         fetchShowsDetails,
         fetchShowsReviews,
         fetchShowsCasts,
+        fetchShowsById,
     };
 };
 
