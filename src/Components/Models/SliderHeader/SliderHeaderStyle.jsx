@@ -8,6 +8,9 @@ export const SliderContainer = styled.div`
     border-radius: 12px;
     border: 1px solid var(--Black-12, #1f1f1f);
     background: var(--Black-06, #0f0f0f);
+    @media only screen and (max-width: 764px) {
+        max-width: 229px;
+    }
 `;
 export const SliderButton = styled.div`
     display: flex;

@@ -5,6 +5,11 @@ export const ContainerQuestion = styled.div`
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
     gap: 80px;
+    @media only screen and (max-width: 764px) {
+        padding: 16px;
+        grid-template-columns: none;
+        max-width: 515px;
+    }
 `;
 export const QuestionButton = styled.div`
     cursor: pointer;

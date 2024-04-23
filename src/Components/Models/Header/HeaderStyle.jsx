@@ -10,6 +10,12 @@ export const Title = styled.div`
     padding-top: ${({ isActive }) => (isActive === "home" ? "0px" : "50px")};
     padding-right: ${({ isActive }) => (isActive === "home" ? "0px" : "50px")};
     padding-left: ${({ isActive }) => (isActive === "home" ? "0px" : "50px")};
+    @media only screen and (max-width: 764px) {
+        padding: 16px;
+        grid-template-columns: none;
+        width: ${({ isActive }) => (isActive === "home" ? "100%" : "")};
+        max-width: 515px;
+    }
 `;
 export const H1 = styled.h1`
     color: var(--Absolute-White, #fff);

@@ -92,6 +92,7 @@ const ContentWithSlider = ({
                             isActive={isActive}
                             key={index}
                             onClick={() => listMovies(item)}
+                            onto
                         >
                             {console.log(firstArray, "firstARray avoe")}
                             {secondArray && secondArray[item.id] ? (

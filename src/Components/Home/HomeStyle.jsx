@@ -36,7 +36,7 @@ export const DevicesBlock = styled.div`
     gap: 30px;
     align-self: stretch;
     @media only screen and (max-width: 764px) {
-        padding: 50px;
+        padding: 16px;
     }
 `;
 export const DevicesCard = styled.div`

@@ -6,7 +6,7 @@ export const PlanBlocks = styled.div`
     gap: 30px;
     align-self: stretch;
     @media only screen and (max-width: 764px) {
-        padding: 50px;
+        padding: 16px;
     }
 `;
 export const PlansTab = styled.div`
@@ -16,6 +16,9 @@ export const PlansTab = styled.div`
     border-radius: 10px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-06, #0f0f0f);
+    @media only screen and (max-width: 764px) {
+        max-width: 207px;
+    }
 `;
 export const PlansTabButton = styled.div`
     display: flex;
