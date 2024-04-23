@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useMovieRequest from "../../../API/useMovieRequest";
 import { genres } from "../../../API/genres";
 import {
@@ -11,7 +11,7 @@ import {
 } from "./MoviesByGenreStyle";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const MoviesByGenre = () => {
+const MoviesByGenre = ({ isMovieContext }) => {
     const [movies, setMovies] = useState({
         results: [],
         page: 1,
@@ -20,7 +20,7 @@ const MoviesByGenre = () => {
     const { id } = useParams();
     const { fetchMovieById } = useMovieRequest();
     const [currentPage, setCurrentPage] = useState(1);
-
+    const navigate = useNavigate();
     const handleLeft = () => {
         // Decrement page if greater than 1
         if (currentPage > 1) {
@@ -34,7 +34,12 @@ const MoviesByGenre = () => {
             setCurrentPage(currentPage + 1);
         }
     };
-
+    const listMovies = (id, name) => {
+        const path = !isMovieContext
+            ? `/movie-shows/movie/${id.id}`
+            : `/movie-shows/show/${id.id}`;
+        navigate(path);
+    };
     useEffect(() => {
         fetchMovieById(id, currentPage).then((data) => {
             console.log(data, "Movie data fetched");
@@ -53,7 +58,10 @@ const MoviesByGenre = () => {
             </TitleContainer>
             <CategoriesBlock>
                 {movies.results.map((movie) => (
-                    <CategoriesSlideCard key={movie.id}>
+                    <CategoriesSlideCard
+                        key={movie.id}
+                        onClick={() => listMovies(movie)}
+                    >
                         <ImageBlock key={movie.id}>
                             <Image
                                 // height={secondArray.length}

@@ -9,7 +9,6 @@ import Movies from "./Components/Movies/Movies";
 import Support from "./Components/Support/Support";
 import Subscriptions from "./Components/Subscriptions/Subscriptions";
 import Home from "./Components/Home/Home";
-import axios from "axios";
 import useShowRequest from "./API/useShowRequest";
 import MoviesPage from "./Components/Movies/MoviesPage/MoviesPage";
 import ShowsPage from "./Components/Movies/ShowsPage/ShowsPage";
@@ -120,7 +119,9 @@ const App = () => {
                     />
                     <Route
                         path="/movie-shows/genre/movie/:id"
-                        element={<MoviesByGenre />}
+                        element={
+                            <MoviesByGenre isMovieContext={isMovieContext} />
+                        }
                     />
                     <Route path="/support" element={<Support />} />
                     <Route path="/subscriptions" element={<Subscriptions />} />

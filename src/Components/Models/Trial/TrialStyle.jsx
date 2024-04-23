@@ -21,6 +21,9 @@ export const BackgroundImage = styled.div`
     border-radius: 12px;
     gap: 20px;
     width: 100%;
+    position: relative;
+    max-height: 395px;
+    overflow: hidden;
 `;
 export const Block = styled.div`
     display: grid;
@@ -29,6 +32,8 @@ export const Block = styled.div`
     flex: 1 0 0;
     z-index: 0;
     align-self: stretch;
+    overflow: hidden;
+
     div {
         width: 146px;
         height: 83.75px;
@@ -45,8 +50,20 @@ export const SecondBlock = styled.div`
     align-items: center;
     justify-content: center;
     top: 37.5%;
+    gap: 20px;
+
+    @media only screen and (max-width: 764px) {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        top: 25%;
+    }
     div {
         max-width: 1597px;
+        display: flex;
+        flex-flow: column;
+        gap: 20px;
     }
 `;
 export const Title = styled.div`
@@ -57,6 +74,13 @@ export const Title = styled.div`
     font-weight: 700;
     line-height: 150%; /* 72px */
     align-self: stretch;
+    @media only screen and (max-width: 764px) {
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+        max-width: 298px !important;
+        text-align: center;
+    }
 `;
 export const Text = styled.div`
     align-self: stretch;
@@ -66,6 +90,15 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 27px */
+
+    @media only screen and (max-width: 764px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        max-width: 298px !important;
+        text-align: center;
+    }
 `;
 export const Button = styled.div`
     width: 188px;
