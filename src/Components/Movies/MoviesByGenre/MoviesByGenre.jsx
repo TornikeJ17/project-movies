@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useMovieRequest from "../../../API/useMovieRequest";
 import { genres } from "../../../API/genres";
+import {
+    CategoriesBlock,
+    CategoriesSlideCard,
+    ImageBlock,
+    Image,
+    TitleContainer,
+} from "./MoviesByGenreStyle";
+const baseURL = "https://image.tmdb.org/t/p/original";
 
 const MoviesByGenre = () => {
     const [movies, setMovies] = useState({
@@ -39,11 +47,23 @@ const MoviesByGenre = () => {
 
     return (
         <div>
-            <h1>{genresResult}</h1>
-            <span>{`Page ${currentPage} / ${movies.total_pages}`}</span>
-            {movies.results.map((movie) => (
-                <div key={movie.id}>{movie.original_title}</div>
-            ))}
+            <TitleContainer>
+                <h1>{genresResult}</h1>
+                <span>{`Page ${currentPage} / ${movies.total_pages}`}</span>
+            </TitleContainer>
+            <CategoriesBlock>
+                {movies.results.map((movie) => (
+                    <CategoriesSlideCard key={movie.id}>
+                        <ImageBlock key={movie.id}>
+                            <Image
+                                // height={secondArray.length}
+                                src={baseURL + movie.poster_path}
+                                alt={movie.title}
+                            />
+                        </ImageBlock>
+                    </CategoriesSlideCard>
+                ))}
+            </CategoriesBlock>
             <button onClick={handleLeft} disabled={currentPage <= 1}>
                 Left
             </button>

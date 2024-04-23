@@ -34,14 +34,14 @@ const SliderHeader = ({
                     {icons[2].svg}
                 </SliderButton>
             </SliderContainer>
-            <SliderRangeInput
+            {/* <SliderRangeInput
                 min="1"
                 max={totalPages}
                 value={activeIndex + 1}
                 onChange={handleSliderChange}
                 totalPages={totalPages} // Pass the totalPages as a prop
                 activeIndex={activeIndex} // And the activeIndex for the styled component
-            />
+            /> */}
         </>
     );
 };
