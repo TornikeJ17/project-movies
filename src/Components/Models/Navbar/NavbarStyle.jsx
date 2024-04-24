@@ -27,7 +27,7 @@ export const SubContainer = styled.div`
 export const SubContainerBlock = styled.div`
     position: absolute;
     width: 1092px;
-    bottom: -7%;
+    bottom: -3%;
     display: flex;
     flex-flow: column;
     justify-content: center;

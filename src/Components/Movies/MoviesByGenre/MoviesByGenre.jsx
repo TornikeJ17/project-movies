@@ -8,6 +8,7 @@ import {
     ImageBlock,
     Image,
     TitleContainer,
+    ShowMoreButton,
 } from "./MoviesByGenreStyle";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -21,19 +22,20 @@ const MoviesByGenre = ({ isMovieContext }) => {
     const { fetchMovieById } = useMovieRequest();
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
-    const handleLeft = () => {
-        // Decrement page if greater than 1
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+
+    const handleShowMore = () => {
+        const nextPage = movies.page + 1;
+        if (nextPage <= movies.total_pages) {
+            fetchMovieById(id, nextPage).then((data) => {
+                setMovies((prevMovies) => ({
+                    ...data,
+                    results: [...prevMovies.results, ...data.results],
+                    page: data.page,
+                }));
+            });
         }
     };
 
-    const handleRight = () => {
-        // Increment page if less than total_pages
-        if (currentPage < movies.total_pages) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
     const listMovies = (id, name) => {
         const path = !isMovieContext
             ? `/movie-shows/movie/${id.id}`
@@ -51,7 +53,7 @@ const MoviesByGenre = ({ isMovieContext }) => {
         genres.find((genre) => genre.id === Number(id))?.name || "";
 
     return (
-        <div>
+        <>
             <TitleContainer>
                 <h1>{genresResult}</h1>
                 <span>{`Page ${currentPage} / ${movies.total_pages}`}</span>
@@ -72,16 +74,12 @@ const MoviesByGenre = ({ isMovieContext }) => {
                     </CategoriesSlideCard>
                 ))}
             </CategoriesBlock>
-            <button onClick={handleLeft} disabled={currentPage <= 1}>
-                Left
-            </button>
-            <button
-                onClick={handleRight}
-                disabled={currentPage >= movies.total_pages}
-            >
-                Right
-            </button>
-        </div>
+            {movies.page < movies.total_pages && (
+                <ShowMoreButton onClick={() => handleShowMore()}>
+                    <span>Show More</span>
+                </ShowMoreButton>
+            )}
+        </>
     );
 };
 

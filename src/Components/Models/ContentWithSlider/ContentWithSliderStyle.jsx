@@ -1,8 +1,10 @@
 import styled from "styled-components";
 export const CategoriesSlideContainer = styled.div`
-    display: grid;
+    display: flex;
+    flex-flow: column;
     gap: 80px;
     max-width: 1597px;
+    width: 100%;
 `;
 
 export const CategoriesSlideBlock = styled.div`
@@ -36,7 +38,7 @@ export const CategoriesSlideCard = styled.div`
         grid-template-columns: ${({ images }) =>
             images > 0
                 ? "repeat(auto-fit, minmax(230px, 1fr))"
-                : "repeat(auto-fit, minmax(200px, 1fr))"};
+                : "repeat(auto-fit, minmax(195px, 1fr))"};
     }
 `;
 export const ImageBlock = styled.div`

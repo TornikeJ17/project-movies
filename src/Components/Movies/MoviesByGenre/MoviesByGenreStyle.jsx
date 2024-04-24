@@ -4,6 +4,7 @@ export const TitleContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
+
     span {
         display: grid;
         justify-content: end;
@@ -52,4 +53,37 @@ export const Image = styled.img`
     object-fit: cover;
     border-radius: 12px;
     opacity: 0.5;
+`;
+export const ShowMoreButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #1f1f1f;
+    background: #0f0f0f;
+    cursor: pointer;
+    margin: 20px auto;
+    span {
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    border-radius: 8px;
+    padding: 14px 24px;
+    gap: 10px;
+    cursor: pointer;
+        &:hover{
+            border: 1px solid var(--Black-10, #1a1a1a);
+    background: var(--Black-10, #1a1a1a);
+}
+        
+        }
+    }
 `;
