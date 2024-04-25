@@ -84,26 +84,42 @@ const Support = () => {
                 </SupportBlock>
                 <SupportBlock isForm={true}>
                     <Form>
-                        <Inputs
-                            name="First Name"
-                            label={"First Name"}
-                            placeholder={"Enter First Name"}
-                        />
-                        <Inputs
-                            name="First Name"
-                            label={"Last Name"}
-                            placeholder={"Enter Last Name"}
-                        />
-                        <Inputs
-                            name="First Name"
-                            label={"Email"}
-                            placeholder={"Enter your Email"}
-                        />
-                        <Inputs
-                            name="First Name"
-                            label={"Phone Number"}
-                            placeholder={"Enter Phone Number"}
-                        />
+                        <div
+                            style={{
+                                display: "flex",
+                                flexFlow: "column",
+                                width: "360px",
+                            }}
+                        >
+                            <Inputs
+                                name="First Name"
+                                label={"First Name"}
+                                placeholder={"Enter First Name"}
+                            />
+                            <Inputs
+                                name="First Name"
+                                label={"Last Name"}
+                                placeholder={"Enter Last Name"}
+                            />
+                        </div>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexFlow: "column",
+                                width: "360px",
+                            }}
+                        >
+                            <Inputs
+                                name="First Name"
+                                label={"Email"}
+                                placeholder={"Enter your Email"}
+                            />
+                            <Inputs
+                                name="First Name"
+                                label={"Phone Number"}
+                                placeholder={"Enter Phone Number"}
+                            />
+                        </div>
                         <Inputs
                             name="First Name"
                             label={"Message"}

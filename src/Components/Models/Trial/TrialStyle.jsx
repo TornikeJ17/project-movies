@@ -2,18 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: grid;
-    border: 1px solid #262626;
     border-radius: 12px;
     position: relative;
-    background: linear-gradient(
-        90deg,
-        #0f0f0f 2.42%,
-        rgba(20, 15, 15, 0.97) 25.46%,
-        rgba(34, 14, 14, 0.91) 46.72%,
-        rgb(229 0 0) 168.98%
-    );
+
     font-family: Manrope;
     max-width: 1597px;
+    @media only screen and (max-width: 764px) {
+        padding: 16px;
+    }
 `;
 export const BackgroundImage = styled.div`
     display: flex;
@@ -24,6 +20,14 @@ export const BackgroundImage = styled.div`
     position: relative;
     max-height: 395px;
     overflow: hidden;
+    background: linear-gradient(
+        90deg,
+        #0f0f0f 2.42%,
+        rgba(20, 15, 15, 0.97) 25.46%,
+        rgba(34, 14, 14, 0.91) 46.72%,
+        rgb(229 0 0) 168.98%
+    );
+    border: 1px solid #262626;
 `;
 export const Block = styled.div`
     display: grid;

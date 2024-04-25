@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SupportContainer = styled.div`
     display: grid;
-    grid-template-columns: 0.6fr 1fr;
+    grid-template-columns: 0.91fr 1fr;
     gap: 80px;
 `;
 export const SupportBlock = styled.div`
