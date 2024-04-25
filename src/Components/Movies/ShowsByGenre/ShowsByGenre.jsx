@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useMovieRequest from "../../../API/useMovieRequest";
-import { movieGenre } from "../../../API/genres";
+import useShowRequest from "../../../API/useShowRequest";
+import { showGenre } from "../../../API/genres";
 import {
     CategoriesBlock,
     CategoriesSlideCard,
@@ -9,27 +9,27 @@ import {
     Image,
     TitleContainer,
     ShowMoreButton,
-} from "./MoviesByGenreStyle";
+} from "./ShowsByGenreStyle";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const MoviesByGenre = ({ isMovieContext }) => {
-    const [movies, setMovies] = useState({
+const ShowsByGenre = ({ isMovieContext }) => {
+    const [shows, setShows] = useState({
         results: [],
         page: 1,
         total_pages: 1,
     });
     const { id } = useParams();
-    const { fetchMovieById } = useMovieRequest();
+    const { fetchShowsById } = useShowRequest();
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
 
     const handleShowMore = () => {
-        const nextPage = movies.page + 1;
-        if (nextPage <= movies.total_pages) {
-            fetchMovieById(id, nextPage).then((data) => {
-                setMovies((prevMovies) => ({
+        const nextPage = shows.page + 1;
+        if (nextPage <= shows.total_pages) {
+            fetchShowsById(id, nextPage).then((data) => {
+                setShows((prevShows) => ({
                     ...data,
-                    results: [...prevMovies.results, ...data.results],
+                    results: [...prevShows.results, ...data.results],
                     page: data.page,
                 }));
             });
@@ -43,38 +43,38 @@ const MoviesByGenre = ({ isMovieContext }) => {
         navigate(path);
     };
     useEffect(() => {
-        fetchMovieById(id, currentPage).then((data) => {
+        fetchShowsById(id, currentPage).then((data) => {
             console.log(data, "Movie data fetched");
-            setMovies(data);
+            setShows(data);
         });
     }, [id, currentPage]); // Add currentPage to the dependency array
 
     const genresResult =
-        movieGenre.find((genre) => genre.id === Number(id))?.name || "";
+        showGenre.find((genre) => genre.id === Number(id))?.name || "";
 
     return (
         <>
             <TitleContainer>
                 <h1>{genresResult}</h1>
-                <span>{`Page ${currentPage} / ${movies.total_pages}`}</span>
+                <span>{`Page ${currentPage} / ${shows.total_pages}`}</span>
             </TitleContainer>
             <CategoriesBlock>
-                {movies.results.map((movie) => (
+                {shows.results.map((show) => (
                     <CategoriesSlideCard
-                        key={movie.id}
-                        onClick={() => listMovies(movie)}
+                        key={show.id}
+                        onClick={() => listMovies(show)}
                     >
-                        <ImageBlock key={movie.id}>
+                        <ImageBlock key={show.id}>
                             <Image
                                 // height={secondArray.length}
-                                src={baseURL + movie.poster_path}
-                                alt={movie.title}
+                                src={baseURL + show.poster_path}
+                                alt={show.title}
                             />
                         </ImageBlock>
                     </CategoriesSlideCard>
                 ))}
             </CategoriesBlock>
-            {movies.page < movies.total_pages && (
+            {shows.page < shows.total_pages && (
                 <ShowMoreButton onClick={() => handleShowMore()}>
                     <span>Show More</span>
                 </ShowMoreButton>
@@ -83,4 +83,4 @@ const MoviesByGenre = ({ isMovieContext }) => {
     );
 };
 
-export default MoviesByGenre;
+export default ShowsByGenre;

@@ -13,6 +13,7 @@ import useShowRequest from "./API/useShowRequest";
 import MoviesPage from "./Components/Movies/MoviesPage/MoviesPage";
 import ShowsPage from "./Components/Movies/ShowsPage/ShowsPage";
 import MoviesByGenre from "./Components/Movies/MoviesByGenre/MoviesByGenre";
+import ShowsByGenre from "./Components/Movies/ShowsByGenre/ShowsByGenre";
 
 const App = () => {
     const {
@@ -121,6 +122,12 @@ const App = () => {
                         path="/movie-shows/genre/movie/:id"
                         element={
                             <MoviesByGenre isMovieContext={isMovieContext} />
+                        }
+                    />
+                    <Route
+                        path="/movie-shows/genre/show/:id"
+                        element={
+                            <ShowsByGenre isMovieContext={isMovieContext} />
                         }
                     />
                     <Route path="/support" element={<Support />} />

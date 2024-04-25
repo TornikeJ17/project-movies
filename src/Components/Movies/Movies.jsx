@@ -91,7 +91,7 @@ const Movies = ({
                     secondArray={showsByGenre}
                     onClickFunction={showsListGenres}
                     isMovieContext={!isMovieContext}
-                    isGenre={isGenre}
+                    isGenre={!isGenre}
                 />
                 <ContentWithSlider
                     HeaderTitle={`Airing Today`}

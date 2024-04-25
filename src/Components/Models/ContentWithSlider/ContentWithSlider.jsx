@@ -58,7 +58,7 @@ const ContentWithSlider = ({
         const path = isGenre
             ? !isMovieContext
                 ? `/movie-shows/genre/movie/${id.id}`
-                : `/movie-shows/show/${id.id}`
+                : `/movie-shows/genre/show/${id.id}`
             : !isMovieContext
             ? `/movie-shows/movie/${id.id}`
             : `/movie-shows/show/${id.id}`;
