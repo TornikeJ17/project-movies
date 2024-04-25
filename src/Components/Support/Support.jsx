@@ -9,10 +9,12 @@ import {
     SubContainer,
     SubContainerBlock,
     ImageBlock,
+    Form,
 } from "./SupportStyle";
 import { images } from "../../API/svgFiles";
 import Trial from "../Models/Trial/Trial";
 import Questions from "../Models/Questions/Questions";
+import Inputs from "../Models/Inputs/Inputs";
 const Support = () => {
     return (
         <Container>
@@ -81,28 +83,33 @@ const Support = () => {
                     </SubContainer>
                 </SupportBlock>
                 <SupportBlock isForm={true}>
-                    <form>
-                        <div>
-                            <label htmlFor="">first name</label>
-                            <input type="text" name="" id="" />
-                        </div>
-                        <div>
-                            <label htmlFor="">first name</label>
-                            <input type="text" name="" id="" />
-                        </div>
-                        <div>
-                            <label htmlFor="">first name</label>
-                            <input type="text" name="" id="" />
-                        </div>
-                        <div>
-                            <label htmlFor="">first name</label>
-                            <input type="text" name="" id="" />
-                        </div>
-                        <div>
-                            <label htmlFor="">first name</label>
-                            <input type="text" name="" id="" />
-                        </div>
-                    </form>
+                    <Form>
+                        <Inputs
+                            name="First Name"
+                            label={"First Name"}
+                            placeholder={"Enter First Name"}
+                        />
+                        <Inputs
+                            name="First Name"
+                            label={"Last Name"}
+                            placeholder={"Enter Last Name"}
+                        />
+                        <Inputs
+                            name="First Name"
+                            label={"Email"}
+                            placeholder={"Enter your Email"}
+                        />
+                        <Inputs
+                            name="First Name"
+                            label={"Phone Number"}
+                            placeholder={"Enter Phone Number"}
+                        />
+                        <Inputs
+                            name="First Name"
+                            label={"Message"}
+                            placeholder={"Enter your Message"}
+                        />
+                    </Form>
                 </SupportBlock>
             </SupportContainer>
             <Questions />

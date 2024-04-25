@@ -13,18 +13,6 @@ export const SupportBlock = styled.div`
     background: ${({ isForm }) => (isForm ? "#0F0F0F" : null)};
     display: grid;
     gap: 20px;
-    form {
-        input {
-            display: flex;
-            padding: 20px;
-            align-items: center;
-            gap: 77px;
-            align-self: stretch;
-            border-radius: 8px;
-            border: 1px solid var(--Black-15, #262626);
-            background: var(--Black-08, #141414);
-        }
-    }
 `;
 export const SupportTitleBlock = styled.div``;
 export const SupportTitle = styled.div`
@@ -72,4 +60,9 @@ export const ImageBlock = styled.div`
     border-radius: 12px;
     background: ${({ image }) =>
         `url(${image}) lightgray 50% / cover no-repeat`};
+`;
+export const Form = styled.form`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
 `;
