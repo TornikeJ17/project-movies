@@ -13,6 +13,7 @@ import {
     LanguagesBlock,
     DirectorBlock,
     Image,
+    TitleBlockContainer,
 } from "./MoviesPageStyle";
 import Titles from "../../Models/Titles/Titles";
 import Trial from "../../Models/Trial/Trial";
@@ -21,6 +22,8 @@ import Casts from "../../Models/Casts/Casts";
 import Description from "../../Models/Description/Description";
 import { icons } from "../../../API/svgFiles";
 import Ratings from "../../Models/Ratings/Ratings";
+import Video from "../../Models/Video/Video";
+import ContainerPlay from "../ContainerPlay/ContainerPlay";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const MoviesPage = () => {
@@ -59,8 +62,14 @@ const MoviesPage = () => {
     const renderPosterWithTitle = () => {
         return (
             <Poster>
-                <PosterImage src={baseURL + movieDetails.backdrop_path} />
+                <PosterImage
+                    src={baseURL + movieDetails.backdrop_path}
+                    Image={baseURL + movieDetails.backdrop_path}
+                />
                 {console.log(movieVideos, "movieVideos")}
+                <TitleBlockContainer>
+                    <ContainerPlay />
+                </TitleBlockContainer>
             </Poster>
         );
     };
@@ -70,12 +79,15 @@ const MoviesPage = () => {
             {renderPosterWithTitle()}
             <div>
                 {movieVideos.map((item) => (
-                    <a
-                        href={`https://www.youtube.com/watch?v=${item.key}`}
-                        target="_blank"
-                    >
-                        {item.name}
-                    </a>
+                    // <a
+                    //     href={`https://www.youtube.com/watch?v=${item.key}`}
+                    //     target="_blank"
+                    // >
+                    //     {item.name}
+                    // </a>
+                    <Video
+                        videoSrc={`https://www.youtube.com/embed/${item.key}`}
+                    />
                 ))}
             </div>
             <MovieBlock>

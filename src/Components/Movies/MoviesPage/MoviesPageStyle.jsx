@@ -7,15 +7,19 @@ export const MoviesPageContainer = styled.div`
     gap: 100px;
 `;
 export const Poster = styled.div`
+    position: relative;
     max-width: 1594px;
 `;
-export const PosterImage = styled.img`
+export const PosterImage = styled.div`
+    height: 835px;
     max-height: 835px;
     border-radius: 12px;
     border: 1px solid #262626;
-    background: linear-gradient(0deg, #141414 0%, rgba(20, 20, 20, 0) 100%),
-        url(<path-to-image>) lightgray 50% / cover no-repeat;
     width: 100%;
+    background: ${({ Image }) =>
+        `linear-gradient(to top, rgba(20, 20, 20, 0.95) 10%, rgba(20, 20, 20, 0.6) 40%, rgba(20, 20, 20, 0)), url(${Image})`};
+    background-position: center top;
+    background-size: cover;
 `;
 export const MovieBlock = styled.div`
     display: grid;
@@ -105,4 +109,13 @@ export const Image = styled.img`
     width: 47px;
     height: 50px;
     border-radius: 6px;
+`;
+
+export const TitleBlockContainer = styled.div`
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 40px;
 `;
