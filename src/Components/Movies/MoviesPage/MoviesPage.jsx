@@ -14,6 +14,9 @@ import {
     DirectorBlock,
     Image,
     TitleBlockContainer,
+    TitleContainer,
+    TitleBlock,
+    TagLine,
 } from "./MoviesPageStyle";
 import Titles from "../../Models/Titles/Titles";
 import Trial from "../../Models/Trial/Trial";
@@ -68,6 +71,10 @@ const MoviesPage = () => {
                 />
                 {console.log(movieVideos, "movieVideos")}
                 <TitleBlockContainer>
+                    <TitleContainer>
+                        <TitleBlock>{movieDetails.title}</TitleBlock>
+                        <TagLine>{movieDetails.tagline}</TagLine>
+                    </TitleContainer>
                     <ContainerPlay />
                 </TitleBlockContainer>
             </Poster>

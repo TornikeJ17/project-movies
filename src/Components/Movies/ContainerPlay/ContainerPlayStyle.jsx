@@ -13,6 +13,7 @@ export const ContainerPlayBlockButton = styled.div`
     gap: 4px;
     border-radius: 8px;
     background: var(--Red-45, #e50000);
+    cursor: pointer;
 `;
 export const ContainerPlayBlockAction = styled.div`
     display: flex;
@@ -22,4 +23,5 @@ export const ContainerPlayBlockAction = styled.div`
     border-radius: 8px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-06, #0f0f0f);
+    cursor: pointer;
 `;

@@ -117,5 +117,30 @@ export const TitleBlockContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 40px;
+    bottom: 50px;
+`;
+export const TitleContainer = styled.div`
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: -150px;
+`;
+export const TitleBlock = styled.div`
+    color: var(--Absolute-White, #fff);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 57px */
+`;
+
+export const TagLine = styled.div`
+    color: var(--Grey-60, #999);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
 `;
