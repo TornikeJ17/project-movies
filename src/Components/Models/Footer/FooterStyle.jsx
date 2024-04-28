@@ -5,6 +5,10 @@ export const Container = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(min(259px, 100%), 1fr));
     padding: 100px 162px 50px 162px;
     background: var(--Black-06, #0f0f0f);
+    @media only screen and (max-width: 764px) {
+        padding: 50px 16px 20px 16px;
+        grid-template-columns: repeat(auto-fit, minmax(min(175px, 100%), 1fr));
+    }
 `;
 export const FooterBlocks = styled.div`
     span {
@@ -33,6 +37,9 @@ export const SecondContainer = styled.div`
     padding: 0px 162px 50px 162px;
     background: var(--Black-06, #0f0f0f);
     gap: 24px;
+    @media only screen and (max-width: 764px) {
+        padding: 50px 16px 20px 16px;
+    }
 `;
 
 export const Line = styled.div`

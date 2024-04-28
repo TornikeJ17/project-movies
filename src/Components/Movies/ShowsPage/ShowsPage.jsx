@@ -21,6 +21,7 @@ import Casts from "../../Models/Casts/Casts";
 import Description from "../../Models/Description/Description";
 import Titles from "../../Models/Titles/Titles";
 import { icons } from "../../../API/svgFiles";
+import SeasonsContainer from "../SeasonsContainer/SeasonsContainer";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const ShowsPage = () => {
@@ -28,13 +29,29 @@ const ShowsPage = () => {
     const [showsDetails, setShowsDetails] = useState(null);
     const [showsReviews, setShowsReviews] = useState([]);
     const [showsCasts, setShowsCasts] = useState([]);
-    const { fetchShowsDetails, fetchShowsReviews, fetchShowsCasts } =
-        useShowRequest();
-
+    const [showEpisode, setShowEpisode] = useState([]);
+    const {
+        fetchShowsDetails,
+        fetchShowsReviews,
+        fetchShowsCasts,
+        fetchSeasonEpisodes,
+    } = useShowRequest();
+    const seasonsNum = showsDetails?.seasons.map((i) => i.season_number);
+    console.log(seasonsNum, "raginda vinaxar");
     useEffect(() => {
         fetchShowsDetails(id).then((data) => {
-            console.log(data);
             setShowsDetails(data);
+            // Fetch episodes for each season after we have the show details
+            data.seasons.forEach((season) => {
+                fetchSeasonEpisodes(id, season.season_number).then(
+                    (episodes) => {
+                        setShowEpisode((prevEpisodes) => ({
+                            ...prevEpisodes,
+                            [season.season_number]: episodes,
+                        }));
+                    }
+                );
+            });
         });
         fetchShowsReviews(id).then((data) => {
             console.log(data);
@@ -45,7 +62,7 @@ const ShowsPage = () => {
             setShowsCasts(data);
         });
     }, [id]);
-
+    console.log(showEpisode, "showEpisode");
     if (!showsDetails) {
         return <div>Loading...</div>;
     }
@@ -64,10 +81,10 @@ const ShowsPage = () => {
 
             <ShowsBlock>
                 <ShowsBlockCard>
+                    <SeasonsContainer showEpisode={showEpisode} />
                     <Description descriptionText={showsDetails.overview} />
                     <Casts castData={showsCasts.cast} CastsTitle={"Cast"} />
                     <Casts castData={showsCasts.crew} CastsTitle={"Crew"} />
-                    {console.log(showsReviews, "ShowReviews")}
                     {showsReviews.length > 0 && (
                         <Reviews reviewData={showsReviews} />
                     )}

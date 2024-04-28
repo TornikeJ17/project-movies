@@ -168,6 +168,23 @@ const useShowRequest = () => {
             throw error;
         }
     };
+    const fetchSeasonEpisodes = async (showId, seasonNumber) => {
+        try {
+            const response = await axios.get(
+                `${API_URL}tv/${showId}/season/${seasonNumber}`,
+                {
+                    headers: {
+                        accept: "application/json",
+                        Authorization,
+                    },
+                }
+            );
+            return response.data.episodes; // The API returns an array of episodes for the season
+        } catch (error) {
+            console.error("Error fetching season episodes:", error);
+            throw error;
+        }
+    };
     return {
         showsGenres,
         showsListGenres,
@@ -185,6 +202,7 @@ const useShowRequest = () => {
         fetchShowsReviews,
         fetchShowsCasts,
         fetchShowsById,
+        fetchSeasonEpisodes,
     };
 };
 

@@ -42,7 +42,6 @@ const Movies = ({
                     isMovieContext={isMovieContext}
                     isGenre={!isGenre}
                 />
-                {console.log(moviesByGenre, "moviesByGenre")}
                 <ContentWithSlider
                     HeaderTitle={`Trending Now`}
                     firstArray={getTrending}
