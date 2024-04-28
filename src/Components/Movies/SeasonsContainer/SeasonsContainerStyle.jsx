@@ -5,7 +5,7 @@ export const ContainerSeason = styled.div`
     background: var(--Black-10, #1a1a1a);
     border-radius: 12px;
     border: 1px solid var(--Black-15, #262626);
-    max-height: 233px;
+    max-height: 100%;
     padding: 50px;
     gap: 20px;
 `;
@@ -26,4 +26,5 @@ export const EpisodeSeasonBlock = styled.div`
     border-radius: 12px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-06, #0f0f0f);
+    cursor: pointer;
 `;
