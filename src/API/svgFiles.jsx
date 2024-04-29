@@ -425,6 +425,7 @@ const devices = [
 const plans = [
     {
         id: 0,
+        tab: "Basic",
         title: "Basic Plan",
         text: "Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.",
         price: "9.99",
@@ -442,6 +443,7 @@ const plans = [
     },
     {
         id: 1,
+        tab: "Standard",
         title: "Standard Plan",
         text: "Access to a wider selection of movies and shows, including most new releases and exclusive content",
         price: "12.99",
@@ -459,6 +461,7 @@ const plans = [
     },
     {
         id: 2,
+        tab: "Premium",
         title: "Premium Plan",
         text: "Access to a widest selection of movies and shows, including all new releases and Offline Viewing",
         price: "14.99",

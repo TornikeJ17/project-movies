@@ -80,7 +80,7 @@ const App = () => {
     const isMovieContext = false;
     const isGenre = false;
     return (
-        <AppContainer isActive={isActive}>
+        <AppContainer isActive={isActive} isMobile={isMobile}>
             <GlobalStyle />
             <Navbar
                 isActive={isActive}
@@ -150,7 +150,10 @@ const App = () => {
                         }
                     />
                     <Route path="/support" element={<Support />} />
-                    <Route path="/subscriptions" element={<Subscriptions />} />
+                    <Route
+                        path="/subscriptions"
+                        element={<Subscriptions isMobile={isMobile} />}
+                    />
                 </Routes>
             </Main>
             <MobileNavBar isActive={isActive} setIsActive={setIsActive} />

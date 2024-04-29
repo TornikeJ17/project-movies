@@ -1,18 +1,25 @@
 import styled from "styled-components";
 
 export const CompareContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: ${({ isMobile }) => (isMobile ? "block" : "grid")};
+    grid-template-columns: ${({ isMobile }) =>
+        isMobile ? "none" : "repeat(4, 1fr)"};
+
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
     border-radius: 12px;
-    border: 1px solid var(--Black-15, #262626);
+    border: ${({ isMobile }) =>
+        isMobile ? "none" : "1px solid var(--Black-15, #262626)"};
 `;
 export const CompareBlock = styled.div`
-    display: grid;
-    align-items: flex-start;
+    display: ${({ isMobile }) => (isMobile ? "flex" : "grid")};
+    flex-direction: ${({ isMobile }) => (isMobile ? "column" : "row")};
+    align-items: ${({ isMobile }) => (isMobile ? "flex-start" : "stretch")};
     align-self: stretch;
+    border: ${({ isMobile }) =>
+        isMobile ? "none" : "1px solid var(--Black-15, #262626)"};
+    border-radius: 12px;
 `;
 
 export const SubHeader = styled.div`
@@ -91,4 +98,33 @@ export const SubData = styled.div`
     font-weight: 500;
     line-height: 150%; /* 27px */
     border: 1px solid var(--Black-15, #262626);
+    border-bottom: ${({ isMobile }) =>
+        isMobile ? "1px solid var(--Black-15, #262626)" : "none"};
+    &:last-child {
+        border-bottom: ${({ isMobile }) => (isMobile ? "none" : "inherit")};
+    }
+`;
+export const TabContainer = styled.div`
+    padding: 16px;
+`;
+export const TabsBlock = styled.div`
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid var(--Black-15, #262626);
+    background: var(--Black-06, #0f0f0f);
+`;
+export const TabsButton = styled.div`
+    display: flex;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 10px;
+    background: ${({ isActive }) =>
+        isActive ? "var(--Black-12, #1f1f1f)" : "transparent"};
+    cursor: pointer;
 `;

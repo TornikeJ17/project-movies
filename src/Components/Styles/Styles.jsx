@@ -18,6 +18,7 @@ export const AppContainer = styled.div`
     display: grid;
     position: relative;
     gap: ${({ isActive }) => (isActive === "home" ? "80px" : "180px")};
+    width: ${({ isMobile }) => (isMobile ? "540px" : "100%")};
 `;
 export const Main = styled.main`
     flex: 1;
