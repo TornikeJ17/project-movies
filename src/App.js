@@ -14,6 +14,7 @@ import MoviesPage from "./Components/Movies/MoviesPage/MoviesPage";
 import ShowsPage from "./Components/Movies/ShowsPage/ShowsPage";
 import MoviesByGenre from "./Components/Movies/MoviesByGenre/MoviesByGenre";
 import ShowsByGenre from "./Components/Movies/ShowsByGenre/ShowsByGenre";
+import MobileNavBar from "./Components/Models/Navbar/MobileNavBar/MobileNavbar";
 
 const App = () => {
     const {
@@ -138,7 +139,7 @@ const App = () => {
                     <Route path="/subscriptions" element={<Subscriptions />} />
                 </Routes>
             </Main>
-
+            <MobileNavBar isActive={isActive} setIsActive={setIsActive} />
             <Footer />
         </AppContainer>
     );

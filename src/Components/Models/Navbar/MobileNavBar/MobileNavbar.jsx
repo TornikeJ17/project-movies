@@ -1,10 +1,34 @@
 import React from "react";
+import { MobileNavBarContainer, MenuItem } from "./MobileNavBarStyle";
+import { mobileNav } from "../../../../API/svgFiles";
+import { NavLink } from "react-router-dom";
 
-const MobileNavBar = () => {
+const MobileNavBar = ({ isActive, setIsActive }) => {
+    const handleClick = (id) => {
+        if (id) {
+            setIsActive(id);
+        }
+    };
     return (
-        <div>
-            <div></div>
-        </div>
+        <MobileNavBarContainer>
+            {mobileNav.map((item, index) => (
+                <NavLink
+                    to={item.url}
+                    key={index}
+                    className={({ isActive }) =>
+                        !isActive ? "Navlink" : "NavLinkActive"
+                    }
+                >
+                    <MenuItem
+                        key={item.id}
+                        // isActive={item.id === isActive}
+                        onClick={() => handleClick(item.id)}
+                    >
+                        {item.svg}
+                    </MenuItem>
+                </NavLink>
+            ))}
+        </MobileNavBarContainer>
     );
 };
 
