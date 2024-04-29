@@ -7,9 +7,11 @@ export const BlockContainer = styled.div`
     gap: 100px;
     align-self: stretch;
     border-radius: 12px;
-    border: 1px solid var(--Black-15, #262626);
+    border: ${({ isMobile }) =>
+        isMobile ? "none" : "1px solid var(--Black-15, #262626)"};
     position: relative;
     &:after {
+        display: ${({ isMobile }) => (isMobile ? "none !important" : "")};
         position: absolute;
         width: 116px;
         height: 50px;
@@ -29,11 +31,33 @@ export const BlockContainer = styled.div`
         line-height: 150%; /* 30px */
     }
     &.movies:after {
-        content: "Movies";
+        content: ${({ isMobile }) => (isMobile ? '""' : '"Movies"')};
     }
     &.shows:after {
-        content: "Shows";
+        content: ${({ isMobile }) => (isMobile ? '""' : '"Shows"')};
     }
 `;
-
-export const TVContainer = styled.div``;
+export const TabContainer = styled.div`
+    padding: 16px;
+`;
+export const TabsBlock = styled.div`
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid var(--Black-15, #262626);
+    background: var(--Black-06, #0f0f0f);
+`;
+export const TabsButton = styled.div`
+    display: flex;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 10px;
+    background: ${({ isActive }) =>
+        isActive ? "var(--Black-12, #1f1f1f)" : "transparent"};
+    cursor: pointer;
+`;

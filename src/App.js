@@ -16,6 +16,8 @@ import MoviesByGenre from "./Components/Movies/MoviesByGenre/MoviesByGenre";
 import ShowsByGenre from "./Components/Movies/ShowsByGenre/ShowsByGenre";
 import MobileNavBar from "./Components/Models/Navbar/MobileNavBar/MobileNavbar";
 
+const Mobile_BreakPoint = 764;
+
 const App = () => {
     const {
         movieGenres,
@@ -47,6 +49,18 @@ const App = () => {
     } = useShowRequest();
     const location = useLocation();
     const [isActive, setIsActive] = useState("");
+    const [isMobile, setIsMobile] = useState(
+        window.innerWidth <= Mobile_BreakPoint
+    );
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= Mobile_BreakPoint);
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     useEffect(() => {
         setIsActive(location.pathname === "/" ? "home" : "");
     }, [location]);
@@ -65,7 +79,6 @@ const App = () => {
     }, []);
     const isMovieContext = false;
     const isGenre = false;
-    const isMobile = false;
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
@@ -112,6 +125,7 @@ const App = () => {
                                 getShowsAiring={getShowsAiring}
                                 isMovieContext={isMovieContext}
                                 isGenre={isGenre}
+                                isMobile={isMobile}
                             />
                         }
                     />

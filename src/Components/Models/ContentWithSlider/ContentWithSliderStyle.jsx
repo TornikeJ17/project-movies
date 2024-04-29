@@ -19,8 +19,12 @@ export const CategoriesSlideBlock = styled.div`
         grid-template-columns: repeat(auto-fill, 372px);
         grid-auto-flow: column;
         padding: 16px;
-        overflow-x: scroll;
+        overflow-x: auto;
+        scrollbar-width: none;
         width: 512px;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 `;
 export const CategoriesSlideCard = styled.div`
@@ -49,7 +53,7 @@ export const ImageBlock = styled.div`
         #1a1a1a 101.79%
     );
     @media only screen and (max-width: 764px) {
-        width: 154px;
+        width: 100%;
     }
 `;
 export const Image = styled.img`

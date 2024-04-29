@@ -10,6 +10,7 @@ export const SliderContainer = styled.div`
     background: var(--Black-06, #0f0f0f);
     @media only screen and (max-width: 764px) {
         max-width: 229px;
+        display: none;
     }
 `;
 export const SliderButton = styled.div`
@@ -37,68 +38,4 @@ export const SliderIndicator = styled.div`
     div:nth-child(${({ activeIndex }) => activeIndex + 1}) {
         background: red;
     }
-`;
-export const SliderRangeInput = styled.input.attrs(
-    ({ totalPages, activeIndex }) => ({
-        type: "range",
-        min: "1",
-        max: totalPages.toString(), // Ensure max is a string
-        value: (activeIndex + 1).toString(), // Ensure value is a string
-    })
-)`
-    flex-grow: 1;
-    margin: 0 16px;
-
-    // Styles to reset the default appearance of the range input
-    -webkit-appearance: none;
-    width: 100%;
-    background: transparent;
-
-    // Custom track
-    &::-webkit-slider-runnable-track {
-        background: #ddd;
-        border-radius: 10px;
-        height: 4px;
-    }
-
-    &::-moz-range-track {
-        background: #ddd;
-        border-radius: 10px;
-        height: 4px;
-    }
-
-    &::-ms-track {
-        background: #ddd;
-        border-radius: 10px;
-        height: 4px;
-    }
-
-    // Custom thumb
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        margin-top: -6px; // Align with the track
-        height: 16px;
-        width: 16px;
-        background: red;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    &::-moz-range-thumb {
-        height: 16px;
-        width: 16px;
-        background: red;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    &::-ms-thumb {
-        height: 16px;
-        width: 16px;
-        background: red;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    // Add more styles for focus or active states if necessary
 `;

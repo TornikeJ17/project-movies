@@ -3,7 +3,6 @@ import {
     SliderContainer,
     SliderButton,
     SliderIndicator,
-    SliderRangeInput,
 } from "./SliderHeaderStyle";
 import { icons } from "../../../API/svgFiles";
 const SliderHeader = ({
@@ -34,14 +33,6 @@ const SliderHeader = ({
                     {icons[2].svg}
                 </SliderButton>
             </SliderContainer>
-            {/* <SliderRangeInput
-                min="1"
-                max={totalPages}
-                value={activeIndex + 1}
-                onChange={handleSliderChange}
-                totalPages={totalPages} // Pass the totalPages as a prop
-                activeIndex={activeIndex} // And the activeIndex for the styled component
-            /> */}
         </>
     );
 };

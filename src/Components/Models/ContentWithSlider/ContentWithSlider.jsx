@@ -29,7 +29,7 @@ const ContentWithSlider = ({
     const navigate = useNavigate();
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
-    const itemsPerPage = 4;
+    const itemsPerPage = isMobile ? firstArray?.length : 4;
     const totalPages = Math.ceil(firstArray?.length / itemsPerPage);
 
     const handleLeftClick = () => {
