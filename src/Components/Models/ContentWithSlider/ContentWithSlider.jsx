@@ -51,10 +51,6 @@ const ContentWithSlider = ({
         setStartIndex(newActiveIndex * itemsPerPage); // Calculate new start index
     };
     const listMovies = (id, name) => {
-        console.log(name, "mitxari name");
-        // const path = !isMovieContext
-        //     ? `/movie-shows/movie/${id.id}`
-        //     : `/movie-shows/show/${id.id}`;
         const path = isGenre
             ? !isMovieContext
                 ? `/movie-shows/genre/movie/${id.id}`
@@ -94,7 +90,6 @@ const ContentWithSlider = ({
                             onClick={() => listMovies(item)}
                             onto
                         >
-                            {console.log(firstArray, "firstARray avoe")}
                             {secondArray && secondArray[item.id] ? (
                                 secondArray[item.id]
                                     .slice(0, 4)

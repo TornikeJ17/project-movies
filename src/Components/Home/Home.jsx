@@ -50,9 +50,7 @@ const Home = ({
                     movieListGenres(item.id);
                 });
             }
-            console.log(genres.genres, "genres");
         }, [genres.genres]);
-        console.log("moviesByGenre", moviesByGenre);
 
         return (
             <ContentWithSlider

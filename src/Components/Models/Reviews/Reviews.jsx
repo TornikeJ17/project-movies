@@ -15,7 +15,6 @@ const Reviews = ({ reviewData }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
     const itemsPerPage = 2;
-    console.log(reviewData, "reviewData", reviewData.length);
     const totalPages = Math.ceil(reviewData?.length / itemsPerPage);
 
     const renderIndicators = () => {

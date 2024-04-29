@@ -44,7 +44,6 @@ const MoviesPage = () => {
 
     useEffect(() => {
         fetchMovieDetails(id).then((data) => {
-            console.log(data);
             setMovieDetails(data); // Set the movie details in state
         });
         fetchMovieReviews(id).then((data) => {
@@ -54,7 +53,6 @@ const MoviesPage = () => {
             setMovieCasts(data);
         });
         fetchMovieVideos(id).then((data) => {
-            console.log(data, "data moviess");
             setMovieVideos(data);
         });
     }, [id]);
@@ -69,7 +67,6 @@ const MoviesPage = () => {
                     src={baseURL + movieDetails.backdrop_path}
                     Image={baseURL + movieDetails.backdrop_path}
                 />
-                {console.log(movieVideos, "movieVideos")}
                 <TitleBlockContainer>
                     <TitleContainer>
                         <TitleBlock>{movieDetails.title}</TitleBlock>

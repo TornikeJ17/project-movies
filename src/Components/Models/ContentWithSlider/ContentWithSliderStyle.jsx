@@ -16,7 +16,11 @@ export const CategoriesSlideBlock = styled.div`
     padding-right: ${({ isActive }) => (isActive === "home" ? "" : "50px")};
     padding-bottom: ${({ isActive }) => (isActive === "home" ? "" : "50px")};
     @media only screen and (max-width: 764px) {
+        grid-template-columns: repeat(auto-fill, 455px);
+        grid-auto-flow: column;
         padding: 16px;
+        overflow-x: scroll;
+        width: 512px;
     }
 `;
 export const CategoriesSlideCard = styled.div`
@@ -47,6 +51,9 @@ export const ImageBlock = styled.div`
         rgba(26, 26, 26, 0) 0%,
         #1a1a1a 101.79%
     );
+    @media only screen and (max-width: 764px) {
+        width: 154px;
+    }
 `;
 export const Image = styled.img`
     width: 100%;

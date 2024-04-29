@@ -68,7 +68,11 @@ const App = () => {
     return (
         <AppContainer isActive={isActive}>
             <GlobalStyle />
-            <Navbar isActive={isActive} setIsActive={setIsActive} />
+            <Navbar
+                isActive={isActive}
+                setIsActive={setIsActive}
+                isMobile={isMobile}
+            />
             <Main>
                 <Routes>
                     <Route
@@ -134,6 +138,7 @@ const App = () => {
                     <Route path="/subscriptions" element={<Subscriptions />} />
                 </Routes>
             </Main>
+
             <Footer />
         </AppContainer>
     );

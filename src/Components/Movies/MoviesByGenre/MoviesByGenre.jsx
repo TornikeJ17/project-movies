@@ -44,7 +44,6 @@ const MoviesByGenre = ({ isMovieContext }) => {
     };
     useEffect(() => {
         fetchMovieById(id, currentPage).then((data) => {
-            console.log(data, "Movie data fetched");
             setMovies(data);
         });
     }, [id, currentPage]); // Add currentPage to the dependency array

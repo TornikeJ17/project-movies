@@ -19,7 +19,7 @@ import logo from "./transparent-logo.svg";
 import { icons, images, menuItems, navbar } from "../../../API/svgFiles";
 import UseSearchRequest from "../../../API/useSearchRequest";
 import MovieShowSearch from "../../Movies/MovieShowSearch/MovieShowSearch";
-const Navbar = ({ isActive, setIsActive }) => {
+const Navbar = ({ isActive, setIsActive, isMobile }) => {
     const handleClick = (id) => {
         if (id) {
             setIsActive(id);
@@ -87,7 +87,7 @@ const Navbar = ({ isActive, setIsActive }) => {
             </SubContainer>
             <NavContainer>
                 <NavbarLogo>{navbar[0].svg}</NavbarLogo>
-                <NavbarMenu>
+                <NavbarMenu isMobile={isMobile}>
                     {menuItems.map((item, index) => (
                         <NavLink
                             to={item.url}

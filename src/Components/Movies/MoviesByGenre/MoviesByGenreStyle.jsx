@@ -15,6 +15,9 @@ export const CategoriesBlock = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1597px;
+    @media only screen and (max-width: 764px) {
+        width: 414px;
+    }
 `;
 
 export const CategoriesSlideCard = styled.div`
@@ -36,7 +39,7 @@ export const CategoriesSlideCard = styled.div`
         grid-template-columns: ${({ images }) =>
             images > 0
                 ? "repeat(auto-fit, minmax(230px, 1fr))"
-                : "repeat(auto-fit, minmax(200px, 1fr))"};
+                : "repeat(auto-fit, minmax(195px, 1fr))"};
     }
 `;
 

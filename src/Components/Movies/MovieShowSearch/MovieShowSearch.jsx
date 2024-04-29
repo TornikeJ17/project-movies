@@ -5,7 +5,6 @@ const MovieShowSearch = ({ query }) => {
     const { search, queryl, setQuery, results } = useSearchRequest();
     const navigate = useNavigate();
     const listMovies = (id) => {
-        console.log(id, "search");
         const path = results.movies
             ? `/movie-shows/movie/${id.id}`
             : `/movie-shows/show/${id.id}`;
