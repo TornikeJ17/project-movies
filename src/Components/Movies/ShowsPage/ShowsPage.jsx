@@ -31,22 +31,20 @@ import Modal from "../../Models/Modal/Modal";
 import Video from "../../Models/Video/Video";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const ShowsPage = ({ isMobile }) => {
+const ShowsPage = ({ isMobile, modalOpen, handleClickModal }) => {
     const { id } = useParams();
     const [showsDetails, setShowsDetails] = useState(null);
     const [showsReviews, setShowsReviews] = useState([]);
     const [showsCasts, setShowsCasts] = useState([]);
     const [showEpisode, setShowEpisode] = useState([]);
-    const [modalOpen, setModalOpen] = useState(false);
+    const [showVideos, setShowVideos] = useState([]);
 
-    const handleClickModal = () => {
-        setModalOpen(!modalOpen);
-    };
     const {
         fetchShowsDetails,
         fetchShowsReviews,
         fetchShowsCasts,
         fetchSeasonEpisodes,
+        fetchShowsVideos,
     } = useShowRequest();
 
     useEffect(() => {
@@ -70,10 +68,14 @@ const ShowsPage = ({ isMobile }) => {
         fetchShowsCasts(id).then((data) => {
             setShowsCasts(data);
         });
+        fetchShowsVideos(id).then((data) => {
+            setShowVideos(data);
+        });
     }, [id]);
     if (!showsDetails) {
         return <div>Loading...</div>;
     }
+    console.log(showVideos, "showVideos");
     const renderPosterWithTitle = () => {
         return (
             <Poster>
@@ -84,7 +86,10 @@ const ShowsPage = ({ isMobile }) => {
                         <TitleBlock>{showsDetails.original_name}</TitleBlock>
                         <TagLine>{showsDetails.tagline}</TagLine>
                     </TitleContainer>
-                    <ContainerPlay />
+                    <ContainerPlay
+                        handleClickModal={handleClickModal}
+                        modalOpen={modalOpen}
+                    />
                 </TitleBlockContainer>
             </Poster>
         );
@@ -97,11 +102,11 @@ const ShowsPage = ({ isMobile }) => {
                     handleClickModal={handleClickModal}
                     children={
                         <div>
-                            {/* {movieVideos.map((item) => (
+                            {showVideos.map((item) => (
                                 <Video
                                     videoSrc={`https://www.youtube.com/embed/${item.key}`}
                                 />
-                            ))} */}
+                            ))}
                         </div>
                     }
                 />

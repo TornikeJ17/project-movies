@@ -52,6 +52,10 @@ const App = () => {
     const [isMobile, setIsMobile] = useState(
         window.innerWidth <= Mobile_BreakPoint
     );
+    const [modalOpen, setModalOpen] = useState(false);
+    const handleClickModal = () => {
+        setModalOpen(!modalOpen);
+    };
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= Mobile_BreakPoint);
@@ -131,11 +135,23 @@ const App = () => {
                     />
                     <Route
                         path="/movie-shows/movie/:id"
-                        element={<MoviesPage isMobile={isMobile} />}
+                        element={
+                            <MoviesPage
+                                isMobile={isMobile}
+                                handleClickModal={handleClickModal}
+                                modalOpen={modalOpen}
+                            />
+                        }
                     />
                     <Route
                         path="/movie-shows/show/:id"
-                        element={<ShowsPage isMobile={isMobile} />}
+                        element={
+                            <ShowsPage
+                                isMobile={isMobile}
+                                handleClickModal={handleClickModal}
+                                modalOpen={modalOpen}
+                            />
+                        }
                     />
                     <Route
                         path="/movie-shows/genre/movie/:id"

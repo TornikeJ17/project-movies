@@ -30,17 +30,13 @@ import ContainerPlay from "../ContainerPlay/ContainerPlay";
 import Modal from "../../Models/Modal/Modal";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const MoviesPage = ({ isMobile }) => {
+const MoviesPage = ({ isMobile, modalOpen, handleClickModal }) => {
     const { id } = useParams();
     const [movieDetails, setMovieDetails] = useState(null);
     const [movieReviews, setMovieReviews] = useState([]);
     const [movieCasts, setMovieCasts] = useState([]);
     const [movieVideos, setMovieVideos] = useState([]);
-    const [modalOpen, setModalOpen] = useState(false);
 
-    const handleClickModal = () => {
-        setModalOpen(!modalOpen);
-    };
     const {
         fetchMovieDetails,
         fetchMovieReviews,
