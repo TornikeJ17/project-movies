@@ -1,10 +1,11 @@
 import React from "react";
-
-const Modal = () => {
+import { ModalContainer } from "./ModalStyle";
+const Modal = ({ children, handleClickModal }) => {
     return (
-        <div>
-            <div></div>
-        </div>
+        <ModalContainer>
+            <div onClick={() => handleClickModal()}>back</div>
+            {children}
+        </ModalContainer>
     );
 };
 

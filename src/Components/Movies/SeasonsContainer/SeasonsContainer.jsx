@@ -6,6 +6,13 @@ import {
     SeasonContainer,
     SeasonBlock,
     CircleButton,
+    EpisodeBlock,
+    EpisodeImage,
+    EpisodeNumber,
+    TitleBlock,
+    ImgNumBlock,
+    Overview,
+    TitleEpisode,
 } from "./SeasonsContainerStyle";
 import { icons } from "../../../API/svgFiles";
 const baseURL = "https://image.tmdb.org/t/p/original";
@@ -53,14 +60,30 @@ const SeasonsContainer = ({ showEpisode }) => {
                         ) : (
                             <div>
                                 {episodes.map((episode) => (
-                                    <div key={episode.id}>
-                                        <img
-                                            width={200}
-                                            src={baseURL + episode.still_path}
-                                        />
-                                        {episode.episode_number}. {episode.name}{" "}
-                                        {episode.runtime + "min"}
-                                    </div>
+                                    <EpisodeBlock key={episode.id}>
+                                        <ImgNumBlock>
+                                            <EpisodeNumber>
+                                                {episode.episode_number}
+                                            </EpisodeNumber>
+                                            <EpisodeImage
+                                                src={
+                                                    baseURL + episode.still_path
+                                                }
+                                            />
+                                        </ImgNumBlock>
+                                        <TitleBlock>
+                                            <TitleEpisode>
+                                                <div>{episode.name}</div>
+                                                <span>
+                                                    {icons[16].svg}
+                                                    {episode.runtime + "min"}
+                                                </span>
+                                            </TitleEpisode>
+                                            <Overview>
+                                                {episode.overview}
+                                            </Overview>
+                                        </TitleBlock>
+                                    </EpisodeBlock>
                                 ))}
                             </div>
                         ))}

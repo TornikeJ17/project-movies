@@ -5,10 +5,10 @@ import {
     ContainerPlayBlockAction,
 } from "./ContainerPlayStyle";
 import { icons } from "../../../API/svgFiles";
-const ContainerPlay = () => {
+const ContainerPlay = ({ modalOpen, handleClickModal }) => {
     return (
         <ContainerPlayBlock>
-            <ContainerPlayBlockButton>
+            <ContainerPlayBlockButton onClick={() => handleClickModal()}>
                 {icons[10].svg}Play Now
             </ContainerPlayBlockButton>
             <ContainerPlayBlockAction>{icons[0].svg}</ContainerPlayBlockAction>

@@ -27,6 +27,8 @@ import Titles from "../../Models/Titles/Titles";
 import { icons } from "../../../API/svgFiles";
 import SeasonsContainer from "../SeasonsContainer/SeasonsContainer";
 import ContainerPlay from "../ContainerPlay/ContainerPlay";
+import Modal from "../../Models/Modal/Modal";
+import Video from "../../Models/Video/Video";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const ShowsPage = ({ isMobile }) => {
@@ -35,6 +37,11 @@ const ShowsPage = ({ isMobile }) => {
     const [showsReviews, setShowsReviews] = useState([]);
     const [showsCasts, setShowsCasts] = useState([]);
     const [showEpisode, setShowEpisode] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const handleClickModal = () => {
+        setModalOpen(!modalOpen);
+    };
     const {
         fetchShowsDetails,
         fetchShowsReviews,
@@ -84,83 +91,117 @@ const ShowsPage = ({ isMobile }) => {
     };
 
     return (
-        <ShowsPageContainer>
-            {renderPosterWithTitle()}
+        <>
+            {modalOpen && (
+                <Modal
+                    handleClickModal={handleClickModal}
+                    children={
+                        <div>
+                            {/* {movieVideos.map((item) => (
+                                <Video
+                                    videoSrc={`https://www.youtube.com/embed/${item.key}`}
+                                />
+                            ))} */}
+                        </div>
+                    }
+                />
+            )}
 
-            <ShowsBlock>
-                <ShowsBlockCard>
-                    <SeasonsContainer showEpisode={showEpisode} />
-                    <Description descriptionText={showsDetails.overview} />
-                    <Casts
-                        castData={showsCasts.cast}
-                        CastsTitle={"Cast"}
-                        isMobile={isMobile}
-                    />
-                    <Casts
-                        castData={showsCasts.crew}
-                        CastsTitle={"Crew"}
-                        isMobile={isMobile}
-                    />
-                    {showsReviews.length > 0 && (
-                        <Reviews reviewData={showsReviews} />
-                    )}
-                </ShowsBlockCard>
-                <ShowsBlockCard>
-                    <Cards>
-                        <CardsBlock>
-                            <Titles
-                                children={"Released Year"}
-                                icons={icons[7].svg}
-                            />
-                            {showsDetails.first_air_date.slice(0, 4)}
-                        </CardsBlock>
-                        <CardsBlock>
-                            <Titles
-                                children={"Available Languages"}
-                                icons={icons[8].svg}
-                            />
-                            <LanguagesContainer>
-                                {showsDetails.spoken_languages.map((item) => (
-                                    <LanguagesBlock>{item.name}</LanguagesBlock>
-                                ))}
-                            </LanguagesContainer>
-                        </CardsBlock>
-                        <CardsBlock>
-                            <Titles children={"Ratings"} icons={icons[4].svg} />
-                        </CardsBlock>
-                        <CardsBlock>
-                            <Titles children={"Genres"} icons={icons[9].svg} />
-                            <LanguagesContainer>
-                                {showsDetails.genres.map((item) => (
-                                    <LanguagesBlock>{item.name}</LanguagesBlock>
-                                ))}
-                            </LanguagesContainer>
-                        </CardsBlock>
-                        <CardsBlock>
-                            <Titles children={"Director"} />
-                            <LanguagesContainer>
-                                {showsCasts.crew?.slice(0, 1).map((item) => (
-                                    <DirectorBlock>
-                                        {item.profile_path ? (
-                                            <Image
-                                                src={
-                                                    baseURL + item.profile_path
-                                                }
-                                                alt=""
-                                            />
-                                        ) : (
-                                            <ImageSvg>{icons[11].svg}</ImageSvg>
-                                        )}
-                                        {item.name}
-                                    </DirectorBlock>
-                                ))}
-                            </LanguagesContainer>
-                        </CardsBlock>
-                    </Cards>
-                </ShowsBlockCard>
-            </ShowsBlock>
-            <Trial />
-        </ShowsPageContainer>
+            <ShowsPageContainer>
+                {renderPosterWithTitle()}
+
+                <ShowsBlock>
+                    <ShowsBlockCard>
+                        <SeasonsContainer showEpisode={showEpisode} />
+                        <Description descriptionText={showsDetails.overview} />
+                        <Casts
+                            castData={showsCasts.cast}
+                            CastsTitle={"Cast"}
+                            isMobile={isMobile}
+                        />
+                        <Casts
+                            castData={showsCasts.crew}
+                            CastsTitle={"Crew"}
+                            isMobile={isMobile}
+                        />
+                        {showsReviews.length > 0 && (
+                            <Reviews reviewData={showsReviews} />
+                        )}
+                    </ShowsBlockCard>
+                    <ShowsBlockCard>
+                        <Cards>
+                            <CardsBlock>
+                                <Titles
+                                    children={"Released Year"}
+                                    icons={icons[7].svg}
+                                />
+                                {showsDetails.first_air_date.slice(0, 4)}
+                            </CardsBlock>
+                            <CardsBlock>
+                                <Titles
+                                    children={"Available Languages"}
+                                    icons={icons[8].svg}
+                                />
+                                <LanguagesContainer>
+                                    {showsDetails.spoken_languages.map(
+                                        (item) => (
+                                            <LanguagesBlock>
+                                                {item.name}
+                                            </LanguagesBlock>
+                                        )
+                                    )}
+                                </LanguagesContainer>
+                            </CardsBlock>
+                            <CardsBlock>
+                                <Titles
+                                    children={"Ratings"}
+                                    icons={icons[4].svg}
+                                />
+                            </CardsBlock>
+                            <CardsBlock>
+                                <Titles
+                                    children={"Genres"}
+                                    icons={icons[9].svg}
+                                />
+                                <LanguagesContainer>
+                                    {showsDetails.genres.map((item) => (
+                                        <LanguagesBlock>
+                                            {item.name}
+                                        </LanguagesBlock>
+                                    ))}
+                                </LanguagesContainer>
+                            </CardsBlock>
+                            <CardsBlock>
+                                <Titles children={"Director"} />
+                                <LanguagesContainer>
+                                    {showsCasts.crew
+                                        ?.slice(0, 1)
+                                        .map((item) => (
+                                            <DirectorBlock>
+                                                {item.profile_path ? (
+                                                    <Image
+                                                        src={
+                                                            baseURL +
+                                                            item.profile_path
+                                                        }
+                                                        alt=""
+                                                    />
+                                                ) : (
+                                                    <ImageSvg>
+                                                        {icons[11].svg}
+                                                    </ImageSvg>
+                                                )}
+                                                {item.name}
+                                            </DirectorBlock>
+                                        ))}
+                                </LanguagesContainer>
+                            </CardsBlock>
+                        </Cards>
+                    </ShowsBlockCard>
+                </ShowsBlock>
+                <Trial />
+            </ShowsPageContainer>
+        </>
     );
 };
 
