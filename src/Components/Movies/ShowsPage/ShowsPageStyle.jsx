@@ -7,15 +7,19 @@ export const ShowsPageContainer = styled.div`
     gap: 100px;
 `;
 export const Poster = styled.div`
+    position: relative;
     max-width: 1594px;
 `;
-export const PosterImage = styled.img`
+export const PosterImage = styled.div`
+    height: 835px;
     max-height: 835px;
     border-radius: 12px;
     border: 1px solid #262626;
-    background: linear-gradient(0deg, #141414 0%, rgba(20, 20, 20, 0) 100%),
-        url(<path-to-image>) lightgray 50% / cover no-repeat;
     width: 100%;
+    background: ${({ Image }) =>
+        `linear-gradient(to top, rgba(20, 20, 20, 0.95) 10%, rgba(20, 20, 20, 0.6) 40%, rgba(20, 20, 20, 0)), url(${Image})`};
+    background-position: center top;
+    background-size: cover;
 `;
 export const ShowsBlock = styled.div`
     display: grid;
@@ -24,7 +28,6 @@ export const ShowsBlock = styled.div`
 `;
 export const ShowsBlockCard = styled.div`
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
 `;
 
@@ -37,6 +40,7 @@ export const Cards = styled.div`
     border-radius: 12px;
     border: 1px solid var(--Black-15, #262626);
     background: var(--Black-10, #1a1a1a);
+    max-height: 700px;
 `;
 export const CardsBlock = styled.div`
     display: grid;
@@ -89,4 +93,37 @@ export const ImageSvg = styled.div`
 
         height: 50px;
     }
+`;
+export const TitleBlockContainer = styled.div`
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 50px;
+`;
+export const TitleContainer = styled.div`
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: -150px;
+`;
+export const TitleBlock = styled.div`
+    color: var(--Absolute-White, #fff);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 57px */
+`;
+
+export const TagLine = styled.div`
+    color: var(--Grey-60, #999);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
 `;

@@ -12,7 +12,10 @@ export const NavContainer = styled.div`
 `;
 export const SubContainer = styled.div`
     display: grid;
-    height: ${({ isActive }) => isActive === "home" && "1092px"};
+    height: ${({ isActive, isMobile }) =>
+        isMobile && isActive === "home"
+            ? "600px "
+            : isActive === "home" && "1092px"};
     max-height: 1092px;
     background-image: ${({ isActive }) =>
         isActive === "home" &&
@@ -27,7 +30,7 @@ export const SubContainer = styled.div`
 export const SubContainerBlock = styled.div`
     position: absolute;
     width: 1092px;
-    bottom: -3%;
+    bottom: ${({ isMobile }) => (isMobile ? "-5%" : "-3%")};
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -41,7 +44,7 @@ export const SubContainerTitle = styled.div`
     color: var(--Absolute-White, #fff);
     text-align: center;
     font-family: Manrope;
-    font-size: 58px;
+    font-size: ${({ isMobile }) => (isMobile ? "28px" : "58px")};
     font-style: normal;
     font-weight: 700;
     line-height: 150%; /* 87px */
@@ -50,7 +53,7 @@ export const SubContainerText = styled.div`
     color: var(--Grey-60, #999);
     text-align: center;
     font-family: Manrope;
-    font-size: 18px;
+    font-size: ${({ isMobile }) => (isMobile ? "14px" : "18px")};
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 27px */

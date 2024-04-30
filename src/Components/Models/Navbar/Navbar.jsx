@@ -27,20 +27,7 @@ const Navbar = ({ isActive, setIsActive, isMobile }) => {
     };
     return (
         <>
-            <SubContainer isActive={isActive}>
-                {/* {images.map(
-                    (item, index) =>
-                        isActive === "home" && (
-                            <ImageContainer key={index}>
-                                {item.name.map((img, index) => (
-                                    <ImageBlock
-                                        key={index}
-                                        images={img.URL}
-                                    ></ImageBlock>
-                                ))}
-                            </ImageContainer>
-                        )
-                )} */}
+            <SubContainer isActive={isActive} isMobile={isMobile}>
                 {isActive === "home" && (
                     <>
                         <div
@@ -52,7 +39,11 @@ const Navbar = ({ isActive, setIsActive, isMobile }) => {
                                 top: "10%",
                             }}
                         >
-                            <img width={500} src={logo} alt="" />
+                            <img
+                                width={isMobile ? 200 : 500}
+                                src={logo}
+                                alt=""
+                            />
                         </div>
                         <div
                             style={{
@@ -60,10 +51,10 @@ const Navbar = ({ isActive, setIsActive, isMobile }) => {
                                 justifyContent: "center",
                             }}
                         >
-                            <SubContainerBlock>
-                                <SubContainerTitle>
+                            <SubContainerBlock isMobile={isMobile}>
+                                <SubContainerTitle isMobile={isMobile}>
                                     The Best Streaming Experience
-                                    <SubContainerText>
+                                    <SubContainerText isMobile={isMobile}>
                                         StreamVibe is the best streaming
                                         experience for watching your favorite
                                         movies and shows on demand, anytime,

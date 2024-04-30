@@ -18,7 +18,7 @@ export const SeasonTitle = styled.div`
     line-height: 150%; /* 36px */
 `;
 export const EpisodeSeasonBlock = styled.div`
-    display: flex;
+    display: grid;
     padding: 24px 50px;
     justify-content: space-between;
     align-items: center;

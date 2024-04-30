@@ -4,6 +4,8 @@ import {
     SeasonTitle,
     EpisodeSeasonBlock,
 } from "./SeasonsContainerStyle";
+const baseURL = "https://image.tmdb.org/t/p/original";
+
 const SeasonsContainer = ({ showEpisode }) => {
     const [isActive, setIsActive] = useState(null);
     const handleClick = (seasonNumber) => {
@@ -20,20 +22,25 @@ const SeasonsContainer = ({ showEpisode }) => {
                 {console.log(episodes, "episodes")}
                 {console.log(seasonNumber, "seasonNumber")}
                 <div>
-                    <h3>Season {seasonNumber}</h3>
+                    <h3>Season {Number(seasonNumber) + 1}</h3>
                     <div>{episodes.length} Episodes</div>
                 </div>
                 {isActive === seasonNumber &&
                     (episodes.length === 0 ? (
                         <p>No episodes available for this season.</p>
                     ) : (
-                        <ul>
+                        <div>
                             {episodes.map((episode) => (
-                                <li key={episode.id}>
-                                    {episode.episode_number}. {episode.name}
-                                </li>
+                                <div key={episode.id}>
+                                    <img
+                                        width={200}
+                                        src={baseURL + episode.still_path}
+                                    />
+                                    {episode.episode_number}. {episode.name}{" "}
+                                    {episode.runtime + "min"}
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     ))}
             </EpisodeSeasonBlock>
         ));

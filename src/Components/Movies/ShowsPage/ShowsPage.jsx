@@ -14,6 +14,10 @@ import {
     DirectorBlock,
     Image,
     ImageSvg,
+    TitleBlockContainer,
+    TitleContainer,
+    TitleBlock,
+    TagLine,
 } from "./ShowsPageStyle";
 import Trial from "../../Models/Trial/Trial";
 import Reviews from "../../Models/Reviews/Reviews";
@@ -22,6 +26,7 @@ import Description from "../../Models/Description/Description";
 import Titles from "../../Models/Titles/Titles";
 import { icons } from "../../../API/svgFiles";
 import SeasonsContainer from "../SeasonsContainer/SeasonsContainer";
+import ContainerPlay from "../ContainerPlay/ContainerPlay";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const ShowsPage = () => {
@@ -69,8 +74,15 @@ const ShowsPage = () => {
     const renderPosterWithTitle = () => {
         return (
             <Poster>
-                <PosterImage src={baseURL + showsDetails.backdrop_path} />
+                <PosterImage Image={baseURL + showsDetails.backdrop_path} />
                 {console.log(showsDetails, "showDetails")}
+                <TitleBlockContainer>
+                    <TitleContainer>
+                        <TitleBlock>{showsDetails.original_name}</TitleBlock>
+                        <TagLine>{showsDetails.tagline}</TagLine>
+                    </TitleContainer>
+                    <ContainerPlay />
+                </TitleBlockContainer>
             </Poster>
         );
     };

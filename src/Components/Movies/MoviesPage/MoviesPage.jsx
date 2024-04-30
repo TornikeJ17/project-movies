@@ -63,10 +63,7 @@ const MoviesPage = () => {
     const renderPosterWithTitle = () => {
         return (
             <Poster>
-                <PosterImage
-                    src={baseURL + movieDetails.backdrop_path}
-                    Image={baseURL + movieDetails.backdrop_path}
-                />
+                <PosterImage Image={baseURL + movieDetails.backdrop_path} />
                 <TitleBlockContainer>
                     <TitleContainer>
                         <TitleBlock>{movieDetails.title}</TitleBlock>

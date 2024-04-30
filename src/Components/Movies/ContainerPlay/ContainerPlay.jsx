@@ -5,7 +5,7 @@ import {
     ContainerPlayBlockAction,
 } from "./ContainerPlayStyle";
 import { icons } from "../../../API/svgFiles";
-const ContainerPlay = ({}) => {
+const ContainerPlay = () => {
     return (
         <ContainerPlayBlock>
             <ContainerPlayBlockButton>

@@ -36,6 +36,9 @@ export const BlockContainer = styled.div`
     &.shows:after {
         content: ${({ isMobile }) => (isMobile ? '""' : '"Shows"')};
     }
+    @media only screen and (max-width: 764px) {
+        display: ${({ active }) => (active ? "flex" : "none")};
+    }
 `;
 export const TabContainer = styled.div`
     padding: 16px;
