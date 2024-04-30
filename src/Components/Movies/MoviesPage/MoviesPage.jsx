@@ -29,7 +29,7 @@ import Video from "../../Models/Video/Video";
 import ContainerPlay from "../ContainerPlay/ContainerPlay";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const MoviesPage = () => {
+const MoviesPage = ({ isMobile }) => {
     const { id } = useParams();
     const [movieDetails, setMovieDetails] = useState(null);
     const [movieReviews, setMovieReviews] = useState([]);
@@ -94,8 +94,16 @@ const MoviesPage = () => {
             <MovieBlock>
                 <MovieBlockCard>
                     <Description descriptionText={movieDetails.overview} />
-                    <Casts castData={movieCasts.cast} CastsTitle={"Cast"} />
-                    <Casts castData={movieCasts.crew} CastsTitle={"Crew"} />
+                    <Casts
+                        castData={movieCasts.cast}
+                        CastsTitle={"Cast"}
+                        isMobile={isMobile}
+                    />
+                    <Casts
+                        castData={movieCasts.crew}
+                        CastsTitle={"Crew"}
+                        isMobile={isMobile}
+                    />
                     {movieReviews.length > 0 && (
                         <Reviews reviewData={movieReviews} />
                     )}

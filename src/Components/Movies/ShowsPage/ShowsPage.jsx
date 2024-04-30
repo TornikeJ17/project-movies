@@ -29,7 +29,7 @@ import SeasonsContainer from "../SeasonsContainer/SeasonsContainer";
 import ContainerPlay from "../ContainerPlay/ContainerPlay";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const ShowsPage = () => {
+const ShowsPage = ({ isMobile }) => {
     const { id } = useParams();
     const [showsDetails, setShowsDetails] = useState(null);
     const [showsReviews, setShowsReviews] = useState([]);
@@ -41,8 +41,7 @@ const ShowsPage = () => {
         fetchShowsCasts,
         fetchSeasonEpisodes,
     } = useShowRequest();
-    const seasonsNum = showsDetails?.seasons.map((i) => i.season_number);
-    console.log(seasonsNum, "raginda vinaxar");
+
     useEffect(() => {
         fetchShowsDetails(id).then((data) => {
             setShowsDetails(data);
@@ -59,15 +58,12 @@ const ShowsPage = () => {
             });
         });
         fetchShowsReviews(id).then((data) => {
-            console.log(data);
             setShowsReviews(data);
         });
         fetchShowsCasts(id).then((data) => {
-            console.log(data);
             setShowsCasts(data);
         });
     }, [id]);
-    console.log(showEpisode, "showEpisode");
     if (!showsDetails) {
         return <div>Loading...</div>;
     }
@@ -95,8 +91,16 @@ const ShowsPage = () => {
                 <ShowsBlockCard>
                     <SeasonsContainer showEpisode={showEpisode} />
                     <Description descriptionText={showsDetails.overview} />
-                    <Casts castData={showsCasts.cast} CastsTitle={"Cast"} />
-                    <Casts castData={showsCasts.crew} CastsTitle={"Crew"} />
+                    <Casts
+                        castData={showsCasts.cast}
+                        CastsTitle={"Cast"}
+                        isMobile={isMobile}
+                    />
+                    <Casts
+                        castData={showsCasts.crew}
+                        CastsTitle={"Crew"}
+                        isMobile={isMobile}
+                    />
                     {showsReviews.length > 0 && (
                         <Reviews reviewData={showsReviews} />
                     )}

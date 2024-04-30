@@ -131,11 +131,11 @@ const App = () => {
                     />
                     <Route
                         path="/movie-shows/movie/:id"
-                        element={<MoviesPage />}
+                        element={<MoviesPage isMobile={isMobile} />}
                     />
                     <Route
                         path="/movie-shows/show/:id"
-                        element={<ShowsPage />}
+                        element={<ShowsPage isMobile={isMobile} />}
                     />
                     <Route
                         path="/movie-shows/genre/movie/:id"

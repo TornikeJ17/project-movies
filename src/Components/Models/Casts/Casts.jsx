@@ -13,10 +13,10 @@ import { icons } from "../../../API/svgFiles";
 import Titles from "../Titles/Titles";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const Casts = ({ castData, CastsTitle }) => {
+const Casts = ({ castData, CastsTitle, isMobile }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
-    const itemsPerPage = 8;
+    const itemsPerPage = isMobile ? 3 : 8;
 
     const handleLeftClick = () => {
         if (startIndex > 0) {
